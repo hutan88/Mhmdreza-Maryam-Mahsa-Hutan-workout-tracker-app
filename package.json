@@ -1,0 +1,24 @@
+{
+  "name": "workout-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lo-Agency-Internship/Mhmreza-Maryam-Mahsa-workout-tracker-app.git"
+  },
+  "author": "mhmdreza-maryam-mahsa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lo-Agency-Internship/Mhmreza-Maryam-Mahsa-workout-tracker-app/issues"
+  },
+  "homepage": "https://github.com/Lo-Agency-Internship/Mhmreza-Maryam-Mahsa-workout-tracker-app#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "express": "^4.18.1",
+    "twig": "^1.15.4"
+  }
+}
