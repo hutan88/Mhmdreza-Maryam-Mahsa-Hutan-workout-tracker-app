@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Lo-Agency-Internship/Mhmreza-Maryam-Mahsa-workout-tracker-app.git"
   },
-  "author": "mhmdreza-maryam-mahsa",
+  "author": "mhmdreza-maryam-mahsa-hutan",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Lo-Agency-Internship/Mhmreza-Maryam-Mahsa-workout-tracker-app/issues"
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/Lo-Agency-Internship/Mhmreza-Maryam-Mahsa-workout-tracker-app#readme",
   "dependencies": {
     "axios": "^0.27.2",
+    "better-sqlite3": "^7.5.3",
     "express": "^4.18.1",
     "twig": "^1.15.4"
   }
