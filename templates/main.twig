@@ -1,1 +1,39 @@
+
 {% extends "./layout.twig" %}
+
+
+
+
+{% block navbar %}
+       <!-- start navbar -->
+    <div class="container mw-100">
+        <nav class="row bg-light justify-content-center pt-2">
+            <!-- a button that if user click on he/she can see other club  -->
+            <div class="col-3 my-2">
+                <button class="btn btn-outline-primary rounded fs-6" title="Show us other Club">Other Clubs</button>
+            </div>
+            <!-- 3 buttons that filter our exercise -->
+            <div class="col-6 my-2 text-center">
+                <div class="btn-group">
+                    <button class="btn btn-secondary mx-2  rounded fs-6" title="Show all exercise">All</button>
+                    <button class="btn btn-secondary mx-2 rounded fs-6" title="Show Daily exercise">Daily</button>
+                    <button class="btn btn-secondary mx-2 rounded fs-6" title="Show Monthly exercise">Monthly</button>
+                </div>
+            </div>
+
+            <!-- a button that user can add a new exercise -->
+            <div class="col-3 my-2 text-end">
+                <button class="btn btn-success rounded fs-6" title="Add a new exercise">Add Exercise</button>
+            </div>
+        </nav>
+    </div>
+    <!-- finish navbar -->     
+{% endblock %}
+
+
+
+{% block cards %}
+
+
+    {% extends "./cards.twig" %}
+{% endblock %}

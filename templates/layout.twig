@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% block html %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,18 +24,22 @@
         </header>
     </div>
     <!-- finish header of webpage -->
-
+         {% block navbar %}
+                
+        {% endblock %}
     <!--start main of webpage  -->
-    <main class="bg-secondary pt-3 pb-5">
+    <main class=" bg-secondary pt-3 pb-5">
         <div class="container bg-light pt-3 rounded-2">
             <div class="row justify-content-center ">  
+            {% block cards %}
+                
+            {% endblock %}
             </div>
         </div>
     </main>
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 
 </html>
+
+{% endblock %}
