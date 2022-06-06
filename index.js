@@ -1,15 +1,28 @@
-const express = require('express');
-const req = require('express/lib/request');
-const app = express()
+const express = require('express')
+const app = express();
 const axious = require('axios').default;
 const path = require('path');
+const staticPath=path.join(__dirname,"public");
+app.use(express.static(staticPath));
+app.use(express.json()); // Used to parse JSON bodies
+app.use(express.urlencoded()); //Parse URL-encoded bodies
+const twig = require("twig");
+app.set("view engine","twig");
+app.set("views",path.join(__dirname,"views"))
 
-app.set("view engine","twig")
-app.set("views",path.join(__dirname,"templates"));
+app.get('/signup',(req,res)=>{
+    res.sendFile('./public/signup.html',{root:__dirname});
+})
 
-app.get("/",(req , res) => 
-{
-    res.render("main");
+app.get('/login',(req,res)=>{
+    res.sendFile('./public/login.html',{root:__dirname});
+})
+
+app.get('/index',(req,res)=>{
+    res.render('index');
+})
+app.get('/exercise',(req,res)=>{
+    res.render('exercise')
 })
 
 app.all('*',(req,res)=>
