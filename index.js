@@ -18,8 +18,8 @@ app.get('/login',(req,res)=>{
     res.sendFile('./public/login.html',{root:__dirname});
 })
 
-app.get('/main',(req,res)=>{
-    res.render('main');
+app.get('/index',(req,res)=>{
+    res.render('index');
 })
 app.get('/exercise',(req,res)=>{
     res.render('exercise')
