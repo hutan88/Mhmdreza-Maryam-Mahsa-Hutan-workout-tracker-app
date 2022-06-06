@@ -6,20 +6,20 @@ const staticPath=path.join(__dirname,"public");
 app.use(express.static(staticPath));
 app.use(express.json()); // Used to parse JSON bodies
 app.use(express.urlencoded()); //Parse URL-encoded bodies
-const twig = require("twig");
+
+
 app.set("view engine","twig");
 app.set("views",path.join(__dirname,"views"))
-
+console.log(path.join(__dirname,"views"))
 app.get('/signup',(req,res)=>{
     res.sendFile('./public/signup.html',{root:__dirname});
 })
-
 app.get('/login',(req,res)=>{
     res.sendFile('./public/login.html',{root:__dirname});
 })
 
-app.get('/index',(req,res)=>{
-    res.render('index');
+app.get('/main',(req,res)=>{
+    res.render('main');
 })
 app.get('/exercise',(req,res)=>{
     res.render('exercise')
