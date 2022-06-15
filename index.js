@@ -1,49 +1,53 @@
-const express = require('express')
+const express = require('express');
 const app = express();
-const axious = require('axios').default;
 const path = require('path');
-const Database = require("better-sqlite3");
 const staticPath=path.join(__dirname,"public");
 app.use(express.static(staticPath));
 app.use(express.json()); // Used to parse JSON bodies
-
-
-const db_name = path.join(__dirname, "models", "app.db");
-let db = new Database(db_name , Database.OPEN_READWRITE, (err) => {
-    if (err) {
-        console.error(err.message);
-    }
-    verbose: console.log}
-);
-
-const createUserTable = "CREATE TABLE IF NOT EXISTS users( id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,username Text,password Text)"
-db.exec(createUserTable);
-const createExeTable = "CREATE TABLE IF NOT EXISTS exercise( exeid INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,title Text,sets Integer,date Integer,count Integer,category Text,id Integer NOT NULL  , FOREIGN KEY (id) REFERENCES users(id))"
-db.exec(createExeTable);
-
+const {insertUser,selectUser,deleteRecord,updateRecord} = require('./models/crud.js')
+const {signup} = require('./controllers/mycontroller')
+//const urls = require('./routes/urls')
+const signupRoute =  require('./routes/urls')
+const loginRoute =  require('./routes/login')
 app.set("view engine","twig");
 app.set("views",path.join(__dirname,"views"))
-console.log(path.join(__dirname,"views"))
-app.get('/signup',(req,res)=>{
-    res.sendFile('./public/signup.html',{root:__dirname});
-})
-app.get('/login',(req,res)=>{
-    res.sendFile('./public/login.html',{root:__dirname});
-})
+//app.use('./routes/urls',urls)
 
-app.get(':name(/index|/)',(req,res)=>{
-    res.render('index');
-})
-app.get('/exercise',(req,res)=>{
-    res.render('exercise')
-})
 
-app.all('*',(req,res)=>
-{
-    res.render("404",{
-        url:req.url
-    })
-})
+
+
+//routes
+
+app.use('/signup', signupRoute); 
+app.use('/login', loginRoute); 
+// app.get('/signup',(req,res)=>{
+//     res.sendFile('./public/signup.html',{root:__dirname});
+// })
+
+// app.post('/signup',signup)
+    
+    
+//     //return
+    
+
+// app.get('/login',(req,res)=>{
+//     res.sendFile('./public/login.html',{root:__dirname});
+// })
+// app.post('/login',(req,res)=>{
+//     console.log('second');
+//     res.sendFile('./public/login.html',{root:__dirname});
+// })
+
+// app.get('/testselect',(req,res)=>{
+//     const users = selectUser();
+//     res.render('testselect',{users})
+// })
+
+//console.log(selectUser())
+//updateRecord(9,'pendar');
+//console.log(selectUser())
+
+
 
 app.listen(3000,()=> {
 
