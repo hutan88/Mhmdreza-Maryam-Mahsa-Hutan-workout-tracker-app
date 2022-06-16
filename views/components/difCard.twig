@@ -1,0 +1,94 @@
+{% macro userCard(exerciseDetails) %}
+
+<!-- start main -->
+<main class=" pt-3 pb-5">
+    <div class="container pt-3 rounded-2">
+        <div class="row justify-content-center ">
+
+
+
+            {# {{exerciseDetails}} #}
+            {% for exerciseDetail in exerciseDetails %}
+
+            <div class="card col-4 col-lg-3 m-2 border-5 border-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <h5 class="card-title fw-bold">Category : {{exerciseDetail.category}}</h5>
+                    </div>
+                    <h6 class="card-subtitle mt-2 fw-bold">Name : {{exerciseDetail.title}}</h6>
+                    <label class="fw-bold" for="">Due Date : {{exerciseDetail.date}}</label><br>
+                    <label class="fw-bold" for="">Time : {{exerciseDetail.count}}</label><br>
+                    <label for="" class="fw-bold">Set : {{exerciseDetail.sets}}</label><br>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</main>
+<!-- finish main -->
+{% endmacro %}
+
+
+
+{% macro editTicket() %}
+{% import "components/button.twig" as buttonss %}
+
+<div class="container pt-3 pb-5 px-0">
+    <div class="bg-light pt-3 rounded-2 px-3">
+        <div class="row justify-content-center ">
+            <div class="table-responsive-sm">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Exercise Name</th>
+                            <th>Set</th>
+                            <th>Date</th>
+                            <th>count</th>
+                            <th>category</th>
+                            <th class="d-print-none">
+
+                               {{buttonss.button(
+
+                                    [
+                                        {
+                                        class : "btn btn-sm btn-success",
+                                        title : "Add"
+                                        }
+                                    ]
+                                )}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{data.title}} </td>
+                            <td>{{data.sets}} </td>
+                            <td>{{data.date}} </td>
+                            <td>{{data.count}} </td>
+                            <td>{{data.category}} </td>
+                            <td class="d-print-none">
+                                {# {% import "components/button.twig" as buttonss %} #}
+
+                                {{buttonss.button(
+
+                                [
+                                    {
+                                    class : "btn btn-sm btn-warning",
+                                    title : "Edit"
+                                    },
+                                    {
+                                    class : "btn btn-sm btn-warning",
+                                    title : "Delete"
+                                    },
+                                ]
+                                )}}
+                            </td>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endmacro %}

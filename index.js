@@ -20,6 +20,14 @@ app.set("views",path.join(__dirname,"views"))
 
 app.use('/signup', signupRoute); 
 app.use('/signin', loginRoute); 
+
+
+app.get('/index',(req,res) =>{
+    res.render('index')
+})
+app.get('/exercise',(req,res) =>{
+    res.render('exercise')
+})
 // app.get('/signup',(req,res)=>{
 //     res.sendFile('./public/signup.html',{root:__dirname});
 // })
