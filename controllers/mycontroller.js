@@ -6,7 +6,7 @@ const {insertUser,selectUser,deleteRecord,updateRecord} = require('../models/cru
 const signup = function(req,res){
     const {username,password} = req.body;
     insertUser(username,password)
-    res.redirect('login');
+    res.redirect('signin');
 }
 
 module.exports = {signup}
