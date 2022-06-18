@@ -1,5 +1,5 @@
 
-const {insertUser,selecttUser,selecttUserCompare,deleteUser,updateUser} = require('../controllers/crud');
+const {insertUser,selectUser,deleteUser,updateUser} = require('../controllers/crud');
 const { hashPass } = require('../utils/hash');
 
 // ================ REGISTER ==============
@@ -11,18 +11,40 @@ const register = function(req,res){
     res.redirect('login');
 }
 
+const checkDuplicateUsername = function(req,res){
+
+    const username1 = req.body;
+    const users = selectUser();
+    let check = (users.find((e => e.username === username1.username)));
+    if(check){
+        res.send({answer:false})
+        return
+    }
+    res.send({answer:true})
+
+}
 
 // ================ LOGIN ==============
 
-const login = function(req,res){
 
+const login = function(req,res){
+    console.log('check enter the function',req.body)
     const {username} = req.body;
     const password = hashPass(req.body.password)
-    // const getUser= selecttUserCompare(username);
-    // console.log(getUser);
-    // insertUser(username,password);
-    // res.redirect('login');
+    const users = selectUser();
+    let findUser = (users.find((e => e.username === username)));
+    console.log('test outer',findUser)
+    if (findUser && findUser.password === password ){
+        console.log('test if claues')
+        //if (findUser.password === password){
+            console.log('checkpassword')
+            res.send({'id':findUser.id}) 
+        
+        
+    }else{
+        //res.send({'status':})
+    }
 }
 
 
-module.exports =  {register,login};
+module.exports =  {register,login,checkDuplicateUsername};
