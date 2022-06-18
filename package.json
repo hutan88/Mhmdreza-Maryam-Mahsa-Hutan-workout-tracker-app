@@ -4,11 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
     "prestart": "node migrations/migration.js",
-=======
-    "prestart":"node migration.js",
->>>>>>> ce38917c285e29d66ba69b7dc72108fcb0bc25f8
     "start": "node index.js"
   },
   "repository": {
