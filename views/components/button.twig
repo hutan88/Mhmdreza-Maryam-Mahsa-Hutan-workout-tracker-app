@@ -1,0 +1,6 @@
+{% macro button(styles)%}
+<!-- a button that user sign out -->
+{% for style in styles %}
+<button class="{{style.class}}">{{style.title}}</button>
+{% endfor %}
+{% endmacro %}

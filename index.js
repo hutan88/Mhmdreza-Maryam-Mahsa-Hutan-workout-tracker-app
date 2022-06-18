@@ -29,6 +29,12 @@ const exerciseRoute=require('./routes/exercise');
 app.use('/',indexRoute);
 app.use('/register',registerRoute);
 app.use('/login',loginRoute);
-app.use('/exercise',exerciseRoute);
+// app.use('/exercise',exerciseRoute);
+app.get('/index',(req,res) =>{
+    res.render('index')
+})
+app.get('/exercise',(req,res) =>{
+    res.render('exercise')
+})
 
 
