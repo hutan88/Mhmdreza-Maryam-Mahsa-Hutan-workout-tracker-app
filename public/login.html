@@ -7,6 +7,10 @@
     <title>Sign in</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <script
+        defer
+        src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"
+      ></script>
 </head>
 
 <body class="opacity-75" style="background-image: url('asset/image/bg-register.jpg'); height: 100vh; background-size: cover; background-position: center;background-repeat: no-repeat; ">
@@ -39,6 +43,8 @@
                         <span class="help-block text-secondary small"
                           >Enter a valid email as Your username</span
                         >
+                        <!-- <p x-text="username"></p> -->
+
                       </div>
       
                       <div class="mb-3 col-md-12">
@@ -53,7 +59,7 @@
                           class="form-control border-dark"
                           placeholder="Enter Password"
                           required
-                          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                          
                         />
                         <span class="help-block text-secondary small"
                           >password should have at least 6 characters and contain at
@@ -79,6 +85,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
-</body>
+        <script src="/script/login-FE.js"></script>
+      </body>
+
 
 </html>

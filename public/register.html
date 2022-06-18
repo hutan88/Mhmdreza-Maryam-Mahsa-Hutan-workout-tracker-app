@@ -46,10 +46,11 @@
                     >UserName<span class="text-danger">*</span></label
                   >
                   <input
-                    type="text"
+                    type="email"
                     name="username"
                     value=""
                     x-model="formData.username"
+                    @blur="checkEmail()"
                     required
                     class="form-control border-dark"
                     placeholder="Enter UserName"
@@ -57,6 +58,7 @@
                   <span class="help-block text-secondary small"
                     >Enter a valid email as Your username</span
                   >
+                  <p x-show.transition="status" class="text-danger small">This email is registered before</p>
                 </div>
 
                 <div class="mb-3 col-md-12">
@@ -71,7 +73,7 @@
                     class="form-control border-dark"
                     placeholder="Enter Password"
                     required
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    
                   />
                   <span class="help-block text-secondary small"
                     >password should have at least 6 characters and contain at
@@ -88,22 +90,15 @@
                     class="form-control border-dark"
                     placeholder="Confirm Password"
                     required
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                
                   />
                 </div>
+                <p x-text="message" class=" help-block text-danger text-center small"></p>
                 <div class="col-md-12 text-center">
                   <button class="btn fw-bold">Register Now</button>
                 </div>
               </div>
-              <div id="message">
-                <h5>
-                  <span class="text-danger"> Requested Password Format :</span>
-                </h5>
-                <b id="letter" class="invalid">lowercase ,</b>
-                <b id="capital" class="invalid">capital (uppercase) ,</b>
-                <b id="number" class="invalid">number ,</b>
-                <b id="length" class="invalid"> Minimum 8 characters</b>
-              </div>
+              
               <p class="text-center mt-3 text-secondary fw-bold">
                 If you have account, Please <a href="login">Login Now</a>
               </p>
@@ -119,7 +114,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="script/register-FE.js"></script>
+    <script src="/script/register-FE.js"></script>
 
   </body>
 </html>

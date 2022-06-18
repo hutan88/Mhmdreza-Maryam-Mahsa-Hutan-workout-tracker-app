@@ -8,18 +8,13 @@ const insertUser= function (username,password)
     data.run(username,password);
 }
 
-const selecttUser= function ()
+const selectUser= function ()
 {
     const data = db.prepare('SELECT * FROM users').all();
     return data;
 }
 
-const selecttUserCompare= function (user,pass)
-{
-    const data = db.prepare(`SELECT  username FROM users WHERE username=?`).all(user);
-    console.log(data) ;
 
-}
 
 const deleteUser = function(id){
     const data = db.prepare(`DELETE FROM users  WHERE id=${id}`);
@@ -32,7 +27,7 @@ const  updateUser = function(id,username){
 }
 
 
-module.exports = {insertUser,selecttUser,selecttUserCompare,deleteUser,updateUser};
+module.exports = {insertUser,selectUser,deleteUser,updateUser};
 
 
 

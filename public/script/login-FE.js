@@ -12,8 +12,14 @@ function loginForm() {
             
 
             }).then((response)=>{
-                // window.location.href ='/login'
-                // console.log(response);
+                window.location.href ='/main'
+                console.log(response);
+                response.json().then(r=>{
+                    let id =  r.id;
+                    console.log(id)
+                    localStorage.setItem('id',id)
+                    console.log('check id')
+                 })
             })
         }
     }

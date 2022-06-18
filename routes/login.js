@@ -8,7 +8,8 @@ router.route('/').get((req,res)=>
 
     res.sendFile( path.join(__dirname,'../public', 'login.html') );
 
-}).post(login)
+})
+//.post(login)
 
 
 module.exports=router;
