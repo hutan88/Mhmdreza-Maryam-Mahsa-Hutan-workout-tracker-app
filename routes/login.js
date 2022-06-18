@@ -1,15 +1,14 @@
-const express = require('express');
-const router = express.Router();
-const {insertUser,selectUser,deleteRecord,updateRecord} = require('../models/crud')
-const {signup} = require('../controllers/mycontroller')
-const path = require('path');
+const express=require('express');
+const router=express.Router();
+const path=require('path');
+const { login } = require('../controllers/userController');
 
-router
- .route('')
- .get((req,res)=>{
-    res.sendFile(path.join(__dirname ,'../public','signin.html'))
- })
- 
+router.route('/').get((req,res)=>
+{
+
+    res.sendFile( path.join(__dirname,'../public', 'login.html') );
+
+}).post(login)
 
 
- module.exports = router;
+module.exports=router;
