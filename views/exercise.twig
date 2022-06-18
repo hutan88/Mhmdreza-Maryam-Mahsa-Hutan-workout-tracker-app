@@ -1,16 +1,22 @@
-  {% extends "components/html.twig" %}
+{% import "components/html.twig" as htmls %}
+{{ htmls.html("bg-exercise.jpg")}}
 
-  {% block header %}  
-    {% include "components/header.twig" %}
-  {% endblock %}
 
-  
-{% block main %}   
-    <main class=" bg-secondary pt-3 pb-5">
-            <div class="container bg-light pt-3 rounded-2">
-                <div class="row justify-content-center "> 
-                {% include "components/form.twig" %}
-            </div>
-        </div>
-    </main>
+
+{% block header %}  
+{% import "components/header.twig" as headers %}
+    {{headers.header()}}
+{% endblock %}
+
+
+{% block main %}  
+<main class="pt-3 pb-5">
+  <div class="container pt-3 rounded-2">
+    {% import "components/form.twig" as forms %}
+    {{forms.form()}}
+    
+    {% import "components/difCard.twig" as editTickets %}
+    {{editTickets.editTicket()}}
+  </div>
+</main>
 {% endblock %}

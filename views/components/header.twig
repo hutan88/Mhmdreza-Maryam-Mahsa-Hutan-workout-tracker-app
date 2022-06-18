@@ -1,20 +1,35 @@
+{% macro header()%}
+<!-- start header of webpage -->
 
-    <!-- start header of webpage -->
-    <div class="container mw-100">
-        <header class="row bg-secondary d-flex justify-content-between">
-            <!-- for logo and name of user that sign in  -->
-            <div class="col-3 my-2"></div>
-            <!-- name of website -->
-            <div class="col-5 text-center my-2">
-                <a href="" class="text-white text-decoration-none fw-bold fs-3">Fitness Club</a>
-            </div>
-            <!-- a button that user sign out -->
-            <div class="col-3 text-end my-2 me-3">
-                <button class="btn btn-danger">Sign out</button>
-            </div>
-        </header>
-    </div>
-    <!-- finish header of webpage -->
+<div class="container mw-100">
+    <header class="row  d-flex justify-content-between">
+        <!-- for logo and name of user that sign in  -->
+        <div class="col-6 text-start my-2">
+            <a href="" class="text-white text-decoration-none fw-bold fs-3">Fitness Club</a>
+        </div>
+        <!-- name of website -->
+        <div class="col-6 text-end my-2">
+            {% import "components/button.twig" as buttons %}
+            {{buttons.button(
 
+            [
+                {
+                class : "btn btn-outline-danger text-white border-0 me-2 fw-bold",
+                title : "Home"
+                },
+                {
+                class : "btn btn-outline-danger text-white border-0 me-2 fw-bold",
+                title : "Exercise"
+                },
+                {
+                class : "btn btn-outline-danger text-white border-0 me-2 fw-bold",
+                title : "Sign out"
+                }
+            ]
 
-  
+            )}}
+        </div>
+    </header>
+</div>
+<!-- finish header of webpage -->
+{% endmacro %}

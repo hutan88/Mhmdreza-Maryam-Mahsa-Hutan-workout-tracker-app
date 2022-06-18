@@ -41,3 +41,13 @@ app.get('/exercise/:id',(req,res)=>{
     //quesry where id = id 
     //res.render('exercise',{'query'})
 })
+// app.use('/exercise',exerciseRoute);
+app.get('/index',(req,res) =>{
+    res.render('index')
+})
+app.get('/exercise',(req,res) =>{
+    res.render('exercise')
+})
+
+
+

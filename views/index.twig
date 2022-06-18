@@ -1,20 +1,46 @@
-  {% extends "components/html.twig" %}
-  
+{% import "components/html.twig" as htmls %}
+{{ htmls.html("bg-main.jpg")}}
+
+
 {% block header %}  
-    {% include "components/header.twig" %}
-{% endblock %}
-
-{% block navbar %}  
-    {% include "components/navbar.twig" %}
+{% import "components/header.twig" as headers %}
+    {{headers.header()}}
 {% endblock %}
 
 
-{% block main %}   
-    <main class=" bg-secondary pt-3 pb-5">
-            <div class="container bg-light pt-3 rounded-2">
-                <div class="row justify-content-center "> 
-                {% include "components/cards.twig" %}
-            </div>
-        </div>
-    </main>
+{% block navbar %} 
+{% import "components/navbar.twig" as navbars %} 
+     {{navbars.navbar()}}
+{% endblock %}
+
+
+{% block main %}  
+{% import "components/difCard.twig" as usersCards %}
+    {{usersCards.userCard(
+       [
+           {
+            category : "aaa",
+            date: "adf",
+            title:"aff",
+            count: "5",
+            sets: "6"
+            }
+            ,
+            {
+            category : "aaa",
+            date: "adf",
+            title:"aff",
+            count: "5",
+            sets: "6"
+            }
+            ,
+            {
+            category : "aaa",
+            date: "adf",
+            title:"aff",
+            count: "5",
+            sets: "6"
+            }
+       ]
+    )}}       
 {% endblock %}
