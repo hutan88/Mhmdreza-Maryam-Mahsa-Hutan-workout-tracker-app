@@ -10,8 +10,7 @@ function registerForm() {
         checkEmail:'',
 
         checkEmail(){
-            
-    
+
                  fetch('/register/checkDuplicateUsername',{
                      method:"post",
                      headers:{'Content-Type': 'application/json'},
@@ -32,24 +31,16 @@ function registerForm() {
                  })
                 },
 
-
-
         submitForm(){
+            
             if (!this.checkEmail){
                 return
             }
             
-            if ( this.formData.password.length < 6 ) {
-                this.message= "Password must be at least 6 characters"
-                return
-    
-                }
-
             const  reg = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
             if (!reg.test(String(this.formData.password).toLowerCase())){
                 this.message = "Password  must contain at least 1 capital letter"
                 return 
-    
             }
 
             if ( this.formData.password.length < 6 ) {
@@ -59,7 +50,6 @@ function registerForm() {
                 }
 
             
-
             if (this.formData.password !== this.formData.password2) {
                 this.message = "Password does not match";
                 

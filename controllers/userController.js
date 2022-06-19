@@ -7,15 +7,18 @@ const register = function(req,res){
 
     const {username} = req.body;
     const password = hashPass(req.body.password)
-    insertUser(username,password);
+    const user = username  
+    insertUser(username.toLowerCase(),password);
     res.redirect('login');
 }
 
+// ========== Check Exist Username in Register Form ================ 
 const checkDuplicateUsername = function(req,res){
 
-    const username1 = req.body;
+    const {username} = req.body;
     const users = selectUser();
-    let check = (users.find((e => e.username === username1.username)));
+    let check = (users.find((e => e.username === username.toLowerCase())));
+
     if(check){
         res.send({answer:false})
         return
@@ -25,26 +28,27 @@ const checkDuplicateUsername = function(req,res){
 }
 
 // ================ LOGIN ==============
-
-
 const login = function(req,res){
-    console.log('check enter the function',req.body)
+    
     const {username} = req.body;
     const password = hashPass(req.body.password)
     const users = selectUser();
-    let findUser = (users.find((e => e.username === username)));
-    console.log('test outer',findUser)
-    if (findUser && findUser.password === password ){
-        console.log('test if claues')
-        //if (findUser.password === password){
-            console.log('checkpassword')
-            res.send({'id':findUser.id}) 
-        
-        
-    }else{
-        res.send({'status':404})
-    }
-}
+    let findUser = (users.find((e => e.username === username.toLowerCase())));
+    
+    try {
+        if (findUser && findUser.password === password ){
 
+            res.send({'id':findUser.id})         
+            
+        }else{
+            res.send({'status':404})
+        }
+        
+    } 
+    catch (error) {
+            console.log('Error :' + error);
+    }
+
+}
 
 module.exports =  {register,login,checkDuplicateUsername};
