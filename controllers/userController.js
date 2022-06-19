@@ -42,7 +42,7 @@ const login = function(req,res){
         
         
     }else{
-        res.send({'status':false})
+        res.send({'status':404})
     }
 }
 

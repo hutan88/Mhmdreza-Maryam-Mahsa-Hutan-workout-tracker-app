@@ -15,15 +15,26 @@ function loginForm() {
 
             }).then((response)=>{
                 
-                if(!r.status){
-                    this.status = true;
-                    console.log('enter invaild part')
-                }
-                else{
-                    window.location.href ='/main'
-                }
+                response.json().then(r=>{
+                    
+                    if(r.status){
+                        this.status = true;
+                        console.log('enter invaild part')
+                    }
+                    else{
+                        window.location.href ='/main'
+                    }
+                    
+                    //let id =  r.id;
+                    //console.log(id)
+                    //localStorage.setItem('id',id)
+                    //console.log('check id')
+                    //console.log(response);
+                    //window.location.href ='/main'
+                    //console.log(response);
                  })
-            }
+            })
         }
     }
+}
 
