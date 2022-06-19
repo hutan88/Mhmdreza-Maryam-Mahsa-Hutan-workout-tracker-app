@@ -7,6 +7,8 @@ function registerForm() {
         },
         message:"",
         status:"",
+        checkEmail:'',
+
         checkEmail(){
             
     
@@ -22,6 +24,7 @@ function registerForm() {
                         if(r.answer === false){
                             console.log('yes')
                             this.status = true;
+                            this.checkEmail = false;
 
                         }
                         })
@@ -32,7 +35,10 @@ function registerForm() {
 
 
         submitForm(){
-
+            if (!this.checkEmail){
+                return
+            }
+            
             if ( this.formData.password.length < 6 ) {
                 this.message= "Password must be at least 6 characters"
                 return
