@@ -27,25 +27,28 @@ const checkDuplicateUsername = function(req,res){
 
 }
 
-
-
 // ================ LOGIN ==============
-
 const login = function(req,res){
     
     const {username} = req.body;
     const password = hashPass(req.body.password)
     const users = selectUser();
-    let findUser = (users.find((e => e.username === username)));
+    let findUser = (users.find((e => e.username === username.toLowerCase())));
     
-    if (findUser && findUser.password === password ){
+    try {
+        if (findUser && findUser.password === password ){
 
-        res.send({'id':findUser.id})         
+            res.send({'id':findUser.id})         
+            
+        }else{
+            res.send({'status':404})
+        }
         
-    }else{
-        res.send({'status':404})
+    } 
+    catch (error) {
+            console.log('Error :' + error);
     }
-}
 
+}
 
 module.exports =  {register,login,checkDuplicateUsername};
