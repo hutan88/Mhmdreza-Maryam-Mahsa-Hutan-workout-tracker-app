@@ -19,4 +19,22 @@
     {{editTickets.editTicket()}}
   </div>
 </main>
+
+  <script >
+        function OnLoad(){
+    const checkUserId = localStorage.getItem('user-id');
+
+    if(checkUserId === null)
+    {
+        window.location.href ='/login'
+    }
+    else{
+        console.log("Logged In")
+    }
+}
+window.onload= OnLoad();
+
+    </script>
+    
+
 {% endblock %}

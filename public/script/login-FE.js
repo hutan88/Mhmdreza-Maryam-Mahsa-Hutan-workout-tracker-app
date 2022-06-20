@@ -14,14 +14,14 @@ function loginForm() {
             
 
             }).then((response)=>{
-                
+               
                 response.json().then(r=>{
-                    
+               
                     if(r.status){
                         this.status = true;
                     }
                     else{
-                        
+                        localStorage.setItem('user-id',r.id) 
                         window.location.href ='/main'
                     }
                     

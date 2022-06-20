@@ -15,21 +15,34 @@
             [
                 {
                 class : "btn btn-outline-danger text-white border-0 me-2 fw-bold",
-                title : "Home"
+                title : "Home",
+                event: ""
                 },
                 {
                 class : "btn btn-outline-danger text-white border-0 me-2 fw-bold",
-                title : "Exercise"
+                title : "Exercise",
+                event: ""
                 },
                 {
                 class : "btn btn-outline-danger text-white border-0 me-2 fw-bold",
-                title : "Sign out"
+                title : "Sign out",
+                event : "SignOut()"
                 }
             ]
 
             )}}
         </div>
+
     </header>
 </div>
 <!-- finish header of webpage -->
+<script>
+
+    function SignOut()
+    {
+        localStorage.removeItem('user-id')
+        location.reload();
+    }
+
+</script>
 {% endmacro %}

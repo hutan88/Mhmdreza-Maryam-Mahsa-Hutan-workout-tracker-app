@@ -17,30 +17,24 @@
 {% block main %}  
 {% import "components/difCard.twig" as usersCards %}
     {{usersCards.userCard(
-       [
-           {
-            category : "aaa",
-            date: "adf",
-            title:"aff",
-            count: "5",
-            sets: "6"
-            }
-            ,
-            {
-            category : "aaa",
-            date: "adf",
-            title:"aff",
-            count: "5",
-            sets: "6"
-            }
-            ,
-            {
-            category : "aaa",
-            date: "adf",
-            title:"aff",
-            count: "5",
-            sets: "6"
-            }
-       ]
+       
     )}}       
+
+    <script >
+        function OnLoad(){
+    const checkUserId = localStorage.getItem('user-id');
+
+    if(checkUserId === null)
+    {
+        window.location.href ='/login'
+    }
+    else{
+        console.log("Logged In")
+    }
+}
+window.onload= OnLoad();
+
+    </script>
+    
 {% endblock %}
+
