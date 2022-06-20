@@ -1,9 +1,15 @@
 const Database = require('better-sqlite3');
 const path = require('path');
+const fs = require("fs");
+
+if (!fs.existsSync(path.join(__dirname,'../models'))){
+    fs.mkdir(path.join(__dirname,'../models'),()=>{
+        console.log('create models folder')
+    })
+
+}
+
 const db_name = path.join(__dirname,'../models','app.db');
-
-
-
 
     let db = new Database(db_name , Database.OPEN_READWRITE, (err) => {
         if (err) {
