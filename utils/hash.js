@@ -21,4 +21,4 @@ return hash.update(id).digest('hex');
 
 }
 
-module.exports= {hashPass,hashID}
+module.exports= {hashPass,hashID};

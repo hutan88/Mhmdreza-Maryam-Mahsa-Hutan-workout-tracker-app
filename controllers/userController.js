@@ -1,6 +1,6 @@
 
 const {insertUser,selectUser,deleteUser,updateUser} = require('../controllers/crud');
-const { hashPass } = require('../utils/hash');
+const { hashPass,hashID} = require('../utils/hash');
 
 // ================ REGISTER ==============
 const register = function(req,res){
@@ -29,15 +29,17 @@ const checkDuplicateUsername = function(req,res){
 
 // ================ LOGIN ==============
 const login = function(req,res){
-    
+   
     const {username} = req.body;
     const password = hashPass(req.body.password)
     const users = selectUser();
     let findUser = (users.find((e => e.username === username.toLowerCase())));
-    
+
+    // const userID=hashID(findUser.id.toString())
+    // console.log("Test ID:",userID);
     try {
         if (findUser && findUser.password === password ){
-
+            res.cookie('user-id',`${findUser.id}`)
             res.send({'id':findUser.id})         
             
         }else{

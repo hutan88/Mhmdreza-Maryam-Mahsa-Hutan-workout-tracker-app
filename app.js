@@ -24,6 +24,7 @@ const registerRoute=require('./routes/register');
 const loginRoute=require('./routes/login');
 const exerciseRoute=require('./routes/exercise');
 const mainRoute=require('./routes/main');
+const { hashID, hashPass } = require('./utils/hash');
 
 
 // =============== Routes Use ==============
@@ -32,3 +33,4 @@ app.use('/register',registerRoute);
 app.use('/login',loginRoute);
 app.use('/exercise',exerciseRoute);
 app.use('/main',mainRoute);
+
