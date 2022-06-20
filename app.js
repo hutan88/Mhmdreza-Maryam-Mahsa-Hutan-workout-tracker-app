@@ -34,4 +34,3 @@ app.use('/login',loginRoute);
 app.use('/exercise',exerciseRoute);
 app.use('/main',mainRoute);
 
-

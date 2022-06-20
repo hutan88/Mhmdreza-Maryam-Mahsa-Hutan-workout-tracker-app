@@ -35,12 +35,12 @@ const login = function(req,res){
     const users = selectUser();
     let findUser = (users.find((e => e.username === username.toLowerCase())));
 
-    const userID=hashID(findUser.id.toString())
-    console.log("Test ID:",userID);
+    // const userID=hashID(findUser.id.toString())
+    // console.log("Test ID:",userID);
     try {
         if (findUser && findUser.password === password ){
-            res.cookie('user-id',`${userID}`)
-            res.send({'id':userID})         
+            res.cookie('user-id',`${findUser.id}`)
+            res.send({'id':findUser.id})         
             
         }else{
             res.send({'status':404})
