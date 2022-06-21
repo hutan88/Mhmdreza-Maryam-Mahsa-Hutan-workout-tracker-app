@@ -32,15 +32,15 @@ module.exports = {insertUser,selectUser,deleteUser,updateUser};
 
 
 // ================== CRUD Exercise ==================
-const selectExercise = function(userId){
+const selectExercisesByUserID = function(userId){
     const data = db.prepare(`SELECT * FROM exercise  WHERE id=${userId}`).all();
     return data
  }
  
- const insertExercise = function (title,time,date,sets,category)
+ const insertExercise = function (title,time,date,sets,category,id)
  {
-     const data = db.prepare('INSERT INTO exercise (title,time,date,sets,category) VALUES (?, ?,?,?,?)');
-     data.run(title,time,date,sets,category);
+     const data = db.prepare('INSERT INTO exercise (title,time,date,sets,category,id) VALUES (?, ?,?,?,?,?)');
+     data.run(title,time,date,sets,category,id);
  }
  
  const deleteExercise = function(id){
@@ -53,4 +53,4 @@ const selectExercise = function(userId){
      data.run(title,date,sets,category);
  }
  
- module.exports = {insertUser,selectUser,deleteUser,updateUser,selectExercise,insertExercise,updateExercise,deleteExercise};
+ module.exports = {insertUser,selectUser,deleteUser,updateUser,selectExercisesByUserID,insertExercise,updateExercise,deleteExercise};

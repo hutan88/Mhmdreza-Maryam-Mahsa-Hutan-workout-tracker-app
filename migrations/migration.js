@@ -2,6 +2,7 @@ const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require("fs");
 
+
 if (!fs.existsSync(path.join(__dirname,'../models'))){
     fs.mkdir(path.join(__dirname,'../models'),()=>{
         console.log('create models folder')
@@ -34,7 +35,6 @@ db.exec(createExeTable);
 // ======= Reset Auto Increment users Table ================= 
 // const resetAutoIncrement = db.prepare(`UPDATE sqlite_sequence SET seq = ?   WHERE name=?`);
 //     resetAutoIncrement.run(0,'users');
-
 
 module.exports = {db};
 

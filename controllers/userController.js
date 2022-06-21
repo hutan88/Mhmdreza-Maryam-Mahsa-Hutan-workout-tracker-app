@@ -39,8 +39,7 @@ const login = function(req,res){
     // console.log("Test ID:",userID);
     try {
         if (findUser && findUser.password === password ){
-            // res.cookie('user-id',`${findUser.id}`)
-            
+      
             res.send({'id':findUser.id})         
             
         }else{
