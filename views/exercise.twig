@@ -22,18 +22,62 @@
 
   <script >
         function OnLoad(){
-    const checkUserId = localStorage.getItem('user-id');
+            const checkUserId = localStorage.getItem('user-id');
 
-    if(checkUserId === null)
-    {
-        window.location.href ='/login'
-    }
-    else{
-        console.log("Logged In")
-    }
+            if(checkUserId === null)
+            {
+                window.location.href ='/login'
+            }
+            else{
+                console.log("Logged In")
+            }
 }
 window.onload= OnLoad();
 
+function crudOperation(){
+  console.log('check crud operation')
+  return{
+    formData:{
+      date:'',
+      time:'',
+      sets:'',
+      category:'',
+      title:''
+
+    },
+    submitForm(){
+      //console.log(formData);
+      console.log('enter submitForm ');
+      fetch('/exercise/add',{
+        method:'post',
+         headers:{'Content-Type': 'application/json'},
+         body: JSON.stringify(this.formData)
+
+      }).then((response)=>{
+        response.json()
+      }).then((r)=>{
+        console.log('check my fetch')
+      })
+      
+    }
+  }
+
+}
+
+{# function getFormData(){
+  return {
+    exeid:'',
+  
+  deleteExercise(){
+    console.log('check my delete exercise')
+    fetch('/exercise/de',{
+        method:'post',
+         headers:{'Content-Type': 'application/json'},
+         body: JSON.stringify({this.exe.id})
+    })
+}
+  }
+} #}
     </script>
     
 
