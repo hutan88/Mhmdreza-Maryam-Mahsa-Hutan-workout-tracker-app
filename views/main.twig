@@ -1,6 +1,7 @@
 {% import "components/html.twig" as htmls %}
 {{ htmls.html("bg-main.jpg")}}
 
+   
 
 {% block header %}  
 {% import "components/header.twig" as headers %}
@@ -16,31 +17,21 @@
 
 {% block main %}  
 {% import "components/difCard.twig" as usersCards %}
+
     {{usersCards.userCard(
-       [
-           {
-            category : "aaa",
-            date: "adf",
-            title:"aff",
-            count: "5",
-            sets: "6"
-            }
-            ,
-            {
-            category : "aaa",
-            date: "adf",
-            title:"aff",
-            count: "5",
-            sets: "6"
-            }
-            ,
-            {
-            category : "aaa",
-            date: "adf",
-            title:"aff",
-            count: "5",
-            sets: "6"
-            }
-       ]
+        allExercise
     )}}       
+    <script >
+  function OnLoad(){
+    const checkUserId = localStorage.getItem('user-id');
+    
+    if(checkUserId === null)
+    {
+        window.location.href ='/login'
+    }
+    window.onload= OnLoad();
+}
+    </script>
+    
 {% endblock %}
+

@@ -1,10 +1,18 @@
 const express=require('express');
 const router=express.Router();
 const path=require('path');
+const { selectExercisesByUserID, insertExercise } = require('../controllers/crud');
+const global = require('../utils/session');
+
 
 router.get('/',(req,res)=>
 {
-    res.render('main');
+ 
+    const allExercise =selectExercisesByUserID(global.getVarGlobal("getId"));
+    console.log(allExercise);
+    res.render('main',{allExercise});
+   
 });
 
-module.exports=router;
+
+module.exports=router;  
