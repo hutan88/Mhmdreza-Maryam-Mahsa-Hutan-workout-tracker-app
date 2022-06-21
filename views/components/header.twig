@@ -26,7 +26,7 @@
                 {
                 class : "btn btn-outline-danger text-white border-0 me-2 fw-bold",
                 title : "Sign out",
-                event : "SignOut()"
+               
                 }
             ]
 
@@ -36,13 +36,5 @@
     </header>
 </div>
 <!-- finish header of webpage -->
-<script>
 
-    function SignOut()
-    {
-        localStorage.removeItem('user-id')
-        location.reload();
-    }
-
-</script>
 {% endmacro %}

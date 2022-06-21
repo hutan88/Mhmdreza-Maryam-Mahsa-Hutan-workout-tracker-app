@@ -15,25 +15,9 @@ const selectUser= function ()
 }
 
 
-
-const deleteUser = function(id){
-    const data = db.prepare(`DELETE FROM users  WHERE id=${id}`);
-    data.run();
-}
-
-const  updateUser = function(id,username){
-    const data = db.prepare(`UPDATE users SET username = ?   WHERE id=${id}`);
-    data.run(username);
-}
-
-
-module.exports = {insertUser,selectUser,deleteUser,updateUser};
-
-
-
 // ================== CRUD Exercise ==================
 const selectExercisesByUserID = function(userId){
-    const data = db.prepare(`SELECT * FROM exercise  WHERE id=${userId}`).all();
+    const data = db.prepare(`SELECT * FROM exercise  WHERE id=?`).all(userId);
     return data
  }
  
@@ -44,13 +28,13 @@ const selectExercisesByUserID = function(userId){
  }
  
  const deleteExercise = function(id){
-     const data = db.prepare(`DELETE FROM exercise  WHERE id=${id}`);
-     data.run();
+     const data = db.prepare(`DELETE FROM exercise  WHERE id=?`);
+     data.run(id);
  }
  
- const updateExercise = function(id,title,time,date,sets,category){
-     const data = db.prepare(`UPDATE exercise SET title = ?, time = ? , date = ?, sets = ?, category = ?   WHERE id=${id}`);
-     data.run(title,date,sets,category);
+ const updateExercise = function(title,date,sets,time,category,id){
+     const data = db.prepare(`UPDATE exercise SET title = ?,   date = ?, sets = ?,  time = ? ,    category = ?   WHERE id=?`);
+     data.run(title,date,sets,time,category,id);
  }
  
- module.exports = {insertUser,selectUser,deleteUser,updateUser,selectExercisesByUserID,insertExercise,updateExercise,deleteExercise};
+ module.exports = {insertUser,selectUser,selectExercisesByUserID,insertExercise,updateExercise,deleteExercise};

@@ -20,7 +20,7 @@ function loginForm() {
                         this.status = true;
                     }
                     else{
-                        localStorage.setItem('user-id',r.id) 
+                
                         window.location.href ='/main'
                     }
                  })

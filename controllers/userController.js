@@ -1,6 +1,7 @@
 
-const {insertUser,selectUser,deleteUser,updateUser} = require('../controllers/crud');
+const {insertUser,selectUser} = require('../controllers/crud');
 const { hashPass,hashID} = require('../utils/hash');
+const global= require('../utils/session');
 
 // ================ REGISTER ==============
 const register = function(req,res){
@@ -35,11 +36,9 @@ const login = function(req,res){
     const users = selectUser();
     let findUser = (users.find((e => e.username === username.toLowerCase())));
 
-    // const userID=hashID(findUser.id.toString())
-    // console.log("Test ID:",userID);
     try {
         if (findUser && findUser.password === password ){
-      
+            global.setVarGlobal("getId",findUser.id);
             res.send({'id':findUser.id})         
             
         }else{
