@@ -26,7 +26,7 @@
                 {
                 class : "btn btn-outline-danger text-white border-0 me-2 fw-bold",
                 title : "Sign out",
-               
+                event: "LogOut()"
                 }
             ]
 
@@ -36,5 +36,12 @@
     </header>
 </div>
 <!-- finish header of webpage -->
+    <script>
+        function LogOut()
+        {
+            window.location.href="/login"
+        }
+
+    </script>
 
 {% endmacro %}
