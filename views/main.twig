@@ -34,6 +34,15 @@
 window.onload= OnLoad();
     </script>
 
+   {% set allExerciseTwig = allExercise %}
+    <script>
+        let  allExerciseJs = {{ allExerciseTwig|json_encode }};    
+         
+    </script>
+    
+    <script src="/script/filter.js">
+     
+    </script>
 
 {% endblock %}
 
