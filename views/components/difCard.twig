@@ -7,7 +7,7 @@
 
             {% for exerciseDetail in exerciseDetails %}
 
-            <div class="card col-4 col-lg-3 m-2 border-5 border-dark opacity-75">
+            <div class="card col-4 col-lg-3 m-2 border-5 border-dark ">
                 <div class="card-body">
                     <div class="row">
                         <h5 class="card-title fw-bold">Category : {{exerciseDetail.category}}</h5>
@@ -27,14 +27,16 @@
 {% endmacro %}
 
 
-
-{% macro editTicket() %}
+{% import "components/form.twig" as forms %}
+{% macro editTicket(data) %}
 {% import "components/button.twig" as buttonss %}
 
-<div class="container pt-3 pb-5 px-0 opacity-75">
+<div class="container pt-3 pb-5 px-0 ">
+    {% if data %}
     <div class="bg-light pt-3 rounded-2 px-3">
         <div class="row justify-content-center ">
             <div class="table-responsive-sm">
+
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -43,39 +45,215 @@
                             <th>Date</th>
                             <th>count</th>
                             <th>category</th>
-                 
+
                         </tr>
                     </thead>
                     <tbody>
+                        {% for d in data %}
                         <tr>
-                            <td>{{data.title}} </td>
-                            <td>{{data.sets}} </td>
-                            <td>{{data.date}} </td>
-                            <td>{{data.count}} </td>
-                            <td>{{data.category}} </td>
-                            <td>{{data.exeid}}</td>
-                            <td class="d-print-none">
+                            <td>{{d.title}} </td>
+                            <td>{{d.sets}} </td>
+                            <td>{{d.date}} </td>
+                            <td>{{d.time}} </td>
+                            <td>{{d.category}} </td>
+                            {# <td>{{data.exeid}}</td> #}
+                            <td>
+
                                 {# {% import "components/button.twig" as buttonss %} #}
 
                                 {{buttonss.button(
 
                                 [
-                                    {
-                                    class : "btn btn-sm btn-warning",
-                                    title : "Edit"
-                                    },
-                                    {
-                                    class : "btn btn-sm btn-warning",
-                                    title : "Delete"
-                                    },
+                                {
+                                class : "btn btn-sm btn-warning ",
+
+                                title : "Edit",
+                                modal:"modal",
+                                id:"#editModal",
+                                event:"",
+
+                                },
+                                {
+                                class : "btn btn-sm btn-warning",
+                                title : "Delete",
+                                modal:"modal",
+                                id:"#deleted"{{d.execid}},
+                                event:""
+                                },
                                 ]
                                 )}}
-                            </td>
-                    </tbody>
-                </table>
+
+                                <!--  edit Modal -->
+                                <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
+                                    id="editModal" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-scrollable">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit exercise</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h3>this is just a test</h3>
+                                                <p>{{d.title}}</p>
+                                                <div class="row justify-content-center bg-light rounded-3 p-5"
+                                                    x-data="crudOperation()">
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <div class="col-3 ">
+                                                                <select x-model="formData.category"
+                                                                    class=" form-select form-select-sm border-dark"
+                                                                    aria-label=".form-select-sm example">
+                                                                    <option selected>Category</option>
+                                                                    <option value="Flexibility Exercise">Flexibility
+                                                                        Exercise</option>
+                                                                    <option value="Resistance Exercise">Resistance
+                                                                        Exercise</option>
+
+                                                                    <option value="Aerobic Exercise">Aerobic Exercise
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                            <p x-text="formData.category"></p>
+                                                        </div>
+                                                        <div class="form-group mt-3">
+                                                            <label class="fw-bolder" for="exampleInputPassword1">Due
+                                                                Date</label>
+                                                            <input type="date" id="date" name="date"
+                                                                x-model="formData.date" value="">
+                                                            <p x-text='formData.date'></p>
+                                                        </div>
+                                                        <div class="form-group col-md-8 mt-2">
+                                                            <label class="fw-bolder"
+                                                                for="exampleInputPassword1">Exercise name</label>
+                                                            <input type="int" class="form-control border-dark"
+                                                                id="exampleInputEmail1" aria-describedby="addExercise"
+                                                                value="{{d.title}}">
+
+                                                            <p x-text='formData.title'>"{{d.title}}"</p>
+
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-md-4 mt-2 ">
+                                                                <label class="fw-bolder" for="exampleCheck1">Set</label>
+                                                                <input type="int" class="form-control border-dark"
+                                                                    id="exampleInputEmail1"
+                                                                    aria-describedby="addExercise"
+                                                                    x-model="formData.sets" value="{{d.sets}}">
+                                                            </div>
+                                                            <div class="form-group col-md-4 mt-2">
+                                                                <label class="fw-bolder"
+                                                                    for="exampleCheck1">Time</label>
+                                                                <input type="int" class="form-control btn  border-dark"
+                                                                    id="exampleInputEmail1"
+                                                                    aria-describedby="addExercise"
+                                                                    x-model="formData.time" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary">Edit</button>
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Cancel</button>
+                                                        </div>
+
+                                                    </form>
+                                                </div>
+                                            </div>
+
+
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
             </div>
+            <!--  delete Modal -->
+            <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="deleted"{{d.execid}} tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete Exercise</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h5>Are you sure you want to delete your exercise?</h3>
+                                <div class="row justify-content-center bg-light rounded-3 p-5" x-data="crudOperation()">
+                                    <form>
+                                        <div class="form-group">
+                                            <div class="col-3 ">
+                                                <select x-model="formData.category"
+                                                    class=" form-select form-select-sm border-dark"
+                                                    aria-label=".form-select-sm example">
+                                                    <option selected>Category</option>
+                                                    <option value="Flexibility Exercise">Flexibility
+                                                        Exercise</option>
+                                                    <option value="Resistance Exercise">Resistance
+                                                        Exercise</option>
+
+                                                    <option value="Aerobic Exercise">Aerobic Exercise
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <p x-text="formData.category"></p>
+                                        </div>
+                                        <div class="form-group mt-3">
+                                            <label class="fw-bolder" for="exampleInputPassword1">Due
+                                                Date</label>
+                                            <input type="date" id="date" name="date" x-model="formData.date" value="">
+                                            <p x-text='formData.date'></p>
+                                        </div>
+                                        <div class="form-group col-md-8 mt-2">
+                                            <label class="fw-bolder" for="exampleInputPassword1">Exercise name</label>
+                                            <input type="int" class="form-control border-dark" id="exampleInputEmail1"
+                                                aria-describedby="addExercise" value="{{d.title}}">
+
+                                            
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-4 mt-2 ">
+                                                <label class="fw-bolder" for="exampleCheck1">Set</label>
+                                                <input type="int" class="form-control border-dark"
+                                                    id="exampleInputEmail1" aria-describedby="addExercise"
+                                                    x-model="formData.sets" value="{{d.sets}}">
+                                            </div>
+                                            <div class="form-group col-md-4 mt-2">
+                                                <label class="fw-bolder" for="exampleCheck1">Time</label>
+                                                <input type="int" class="form-control btn  border-dark"
+                                                    id="exampleInputEmail1" aria-describedby="addExercise"
+                                                     value="{{d.time}}">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger">Delete</button>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Cancel</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            </td>
+            {% endfor %}
+            </tbody>
+            </table>
+
+
         </div>
     </div>
+</div>
+{% endif %}
 </div>
 
 {% endmacro %}

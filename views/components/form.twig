@@ -1,7 +1,7 @@
 {% macro form()%}
 
-
-    <div class="row justify-content-center bg-light rounded-3 p-5 opacity-75" x-data="crudOperation()" >
+   
+    <div class="row justify-content-center bg-light rounded-3 p-5" x-data="crudOperation()" >
         <form>
             <div class="form-group">
                 <div class="col-3 ">
@@ -28,7 +28,7 @@
 
             </div>
             <div class="row">
-                <div class="form-group col-md-4 mt-2 opacity-75">
+                <div class="form-group col-md-4 mt-2 ">
                     <label class="fw-bolder" for="exampleCheck1">Set</label>
                     <input type="int" class="form-control border-dark" id="exampleInputEmail1"
                         aria-describedby="addExercise" x-model="formData.sets" value="">
@@ -40,6 +40,7 @@
                 </div>
             </div>
             <button @click="submitForm()" class="btn mt-2 btn-outline-success fw-bold">Submit</button>
+            
         </form>
     </div>
 </div>

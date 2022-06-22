@@ -16,7 +16,7 @@
     {{forms.form()}}
     
     {% import "components/difCard.twig" as editTickets %}
-    {{editTickets.editTicket()}}
+    {{editTickets.editTicket(data)}}
   </div>
 </main>
 
@@ -32,7 +32,7 @@
                 console.log("Logged In")
             }
 }
-window.onload= OnLoad();
+//window.onload= OnLoad();
 
 function crudOperation(){
   console.log('check crud operation')
