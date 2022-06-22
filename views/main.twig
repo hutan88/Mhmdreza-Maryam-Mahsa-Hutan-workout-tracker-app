@@ -21,30 +21,19 @@
     {{usersCards.userCard(
         allExercise
     )}}       
-<script src="../public/script/login-FE.js"></script>
-  <script >
-
+ <script >
   function OnLoad(){
-
     const checkUserId = localStorage.getItem('user-id');
     
-    fetch('/main/api/seassion',{
-        method: "POST",
-        headers:{'Content-Type': 'application/json'},
-         body: JSON.stringify({checkUserId})
-    }).then(response=>
+    if(checkUserId === null)
     {
-          response.json().then(r=>
-          {
-            console.log(r);;
-          })
-    })
-
-        {# window.location.href ='/login' #}
-    
+        window.location.href ='/login'
     }
-    window.onload= OnLoad();
+    
+}
+window.onload= OnLoad();
     </script>
+
 
 {% endblock %}
 

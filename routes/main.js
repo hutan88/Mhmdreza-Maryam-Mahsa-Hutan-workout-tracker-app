@@ -9,17 +9,10 @@ router.get('/',(req,res)=>
 {
  
     const allExercise = selectExercisesByUserID(global.getVarGlobal("getId"));
-  
     res.render('main',{allExercise});
    
 })
 
-router.post('/api/seassion',(req,res)=>
-{
-    const getLoggedUserID= Object.values(req.body).toString();
-    console.log(getLoggedUserID);
-    
-})
 
 
 module.exports=router;  
