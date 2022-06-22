@@ -4,7 +4,7 @@ app.use(express.json());
 const path=require('path');
 const staticPath=path.join(__dirname,"public");
 //test
-const {addExercise,showUserExercise} = require('./controllers/exerciseController');
+const {addExercise,showUserExercise,deleteUserExercise} = require('./controllers/exerciseController');
 
 // ============= Twig ===========
 app.set('view engine' , 'twig');
@@ -37,6 +37,6 @@ app.use('/login',loginRoute);
 app.use('/main',mainRoute);
 //test
 app.post('/exercise/add',addExercise);
-//app.get('/exrcise/delete')
-//app.post('/exercise/delete',deleteExrcise)
+
+app.post('/exercise/delete',deleteUserExercise)
 app.get('/exercise',showUserExercise)

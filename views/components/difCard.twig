@@ -43,7 +43,7 @@
                             <th>Exercise Name</th>
                             <th>Set</th>
                             <th>Date</th>
-                            <th>count</th>
+                            <th>Time</th>
                             <th>category</th>
 
                         </tr>
@@ -56,7 +56,7 @@
                             <td>{{d.date}} </td>
                             <td>{{d.time}} </td>
                             <td>{{d.category}} </td>
-                            {# <td>{{data.exeid}}</td> #}
+                            <td>{{d.exeid}}</td>
                             <td>
 
                                 {# {% import "components/button.twig" as buttonss %} #}
@@ -69,7 +69,7 @@
 
                                 title : "Edit",
                                 modal:"modal",
-                                id:"#editModal",
+                                id:"#edit"~d.exeid,
                                 event:"",
 
                                 },
@@ -77,7 +77,7 @@
                                 class : "btn btn-sm btn-warning",
                                 title : "Delete",
                                 modal:"modal",
-                                id:"#deleted"{{d.execid}},
+                                id:"#delete"~d.exeid,
                                 event:""
                                 },
                                 ]
@@ -85,8 +85,8 @@
 
                                 <!--  edit Modal -->
                                 <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
-                                    id="editModal" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                    aria-hidden="true">
+                                    id="edit{{d.exeid}}" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true" x-data="editExercise()">
                                     <div class="modal-dialog modal-dialog-scrollable">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -95,10 +95,9 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <h3>this is just a test</h3>
-                                                <p>{{d.title}}</p>
-                                                <div class="row justify-content-center bg-light rounded-3 p-5"
-                                                    x-data="crudOperation()">
+                                                
+                                                <div class="row justify-content-center bg-light rounded-3 p-5">
+                                                    
                                                     <form>
                                                         <div class="form-group">
                                                             <div class="col-3 ">
@@ -131,7 +130,7 @@
                                                                 id="exampleInputEmail1" aria-describedby="addExercise"
                                                                 value="{{d.title}}">
 
-                                                            <p x-text='formData.title'>"{{d.title}}"</p>
+
 
                                                         </div>
                                                         <div class="row">
@@ -149,7 +148,10 @@
                                                                     id="exampleInputEmail1"
                                                                     aria-describedby="addExercise"
                                                                     x-model="formData.time" value="">
+
                                                             </div>
+                                                            <input type="hidden" id="exeid" name="exeid"
+                                                                value={{d.exeid}}>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-primary">Edit</button>
@@ -170,8 +172,8 @@
                                 </div>
             </div>
             <!--  delete Modal -->
-            <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="deleted"{{d.execid}} tabindex="-1"
-                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="delete{{d.exeid}}"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
                 <div class="modal-dialog modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -184,10 +186,9 @@
                                     <form>
                                         <div class="form-group">
                                             <div class="col-3 ">
-                                                <select x-model="formData.category"
-                                                    class=" form-select form-select-sm border-dark"
+                                                <select class=" form-select form-select-sm border-dark"
                                                     aria-label=".form-select-sm example">
-                                                    <option selected>Category</option>
+                                                    <option selected>{{d.category}}</option>
                                                     <option value="Flexibility Exercise">Flexibility
                                                         Exercise</option>
                                                     <option value="Resistance Exercise">Resistance
@@ -202,7 +203,7 @@
                                         <div class="form-group mt-3">
                                             <label class="fw-bolder" for="exampleInputPassword1">Due
                                                 Date</label>
-                                            <input type="date" id="date" name="date" x-model="formData.date" value="">
+                                            <input type="date" id="date" name="date" value="">
                                             <p x-text='formData.date'></p>
                                         </div>
                                         <div class="form-group col-md-8 mt-2">
@@ -210,7 +211,7 @@
                                             <input type="int" class="form-control border-dark" id="exampleInputEmail1"
                                                 aria-describedby="addExercise" value="{{d.title}}">
 
-                                            
+
 
                                         </div>
                                         <div class="row">
@@ -218,17 +219,19 @@
                                                 <label class="fw-bolder" for="exampleCheck1">Set</label>
                                                 <input type="int" class="form-control border-dark"
                                                     id="exampleInputEmail1" aria-describedby="addExercise"
-                                                    x-model="formData.sets" value="{{d.sets}}">
+                                                    value="{{d.sets}}">
                                             </div>
                                             <div class="form-group col-md-4 mt-2">
                                                 <label class="fw-bolder" for="exampleCheck1">Time</label>
                                                 <input type="int" class="form-control btn  border-dark"
                                                     id="exampleInputEmail1" aria-describedby="addExercise"
-                                                     value="{{d.time}}">
+                                                    value="{{d.time}}">
                                             </div>
+                                            <input type="hidden" id="exeid" name="exeid" value={{d.exeid}}>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger">Delete</button>
+                                            <button type="button" class="btn btn-danger"
+                                                onclick="deleteExercise()">Delete</button>
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Cancel</button>
                                         </div>
