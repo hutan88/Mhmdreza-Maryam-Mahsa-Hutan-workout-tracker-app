@@ -37,11 +37,16 @@ const login = function(req,res){
     let findUser = (users.find((e => e.username === username.toLowerCase())));
 
     try {
+        let statesession=false;
         if (findUser && findUser.password === password ){
             global.setVarGlobal("getId",findUser.id);
-            res.send({'id':findUser.id})         
-            
-        }else{
+            statesession=true;
+            const hashedID=hashID( findUser.id.toString());
+            res.send({'id':hashedID,'state': statesession});
+        }
+        else
+        {
+            statesession=false;
             res.send({'status':404})
         }
         
