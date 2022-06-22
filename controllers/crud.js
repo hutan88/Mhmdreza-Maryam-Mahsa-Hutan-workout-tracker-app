@@ -27,14 +27,14 @@ const selectExercisesByUserID = function(userId){
      data.run(title,time,date,sets,category,id);
  }
  
- const deleteExercise = function(id){
-     const data = db.prepare(`DELETE FROM exercise  WHERE id=?`);
-     data.run(id);
+ const deleteExercise = function(exeid){
+     const data = db.prepare(`DELETE FROM exercise  WHERE exeid=?`);
+     data.run(exeid);
  }
  
- const updateExercise = function(title,date,sets,time,category,id){
-     const data = db.prepare(`UPDATE exercise SET title = ?,   date = ?, sets = ?,  time = ? ,    category = ?   WHERE id=?`);
-     data.run(title,date,sets,time,category,id);
+ const updateExercise = function(title,date,sets,time,category,exeid){
+     const data = db.prepare(`UPDATE exercise SET title = ?,   date = ?, sets = ?,  time = ? ,    category = ?   WHERE exeid=?`);
+     data.run(title,date,sets,time,category,exeid);
  }
  
  module.exports = {insertUser,selectUser,selectExercisesByUserID,insertExercise,updateExercise,deleteExercise};

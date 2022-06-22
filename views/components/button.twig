@@ -1,6 +1,6 @@
 {% macro button(styles)%}
 <!-- a button that user sign out -->
 {% for style in styles %}
-<button class="{{style.class}}" onclick={{style.event}}>{{style.title}}</button>
+<button class="{{style.class}}" onclick="{{style.event}}" data-bs-toggle="{{style.modal}}" data-bs-target="{{style.id}}">{{style.title}}</button>
 {% endfor %}
 {% endmacro %}

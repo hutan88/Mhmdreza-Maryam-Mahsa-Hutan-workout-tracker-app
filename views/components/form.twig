@@ -1,44 +1,49 @@
 {% macro form()%}
 
-
-    <div class="row justify-content-center bg-light rounded-3 p-5 opacity-75">
+   
+    <div class="row justify-content-center bg-light rounded-3 p-5" x-data="crudOperation()" >
         <form>
             <div class="form-group">
                 <div class="col-3 ">
-                    <select class=" form-select form-select-sm border-dark" aria-label=".form-select-sm example">
-                        <option selected>Category</option>
-                        <option value="1">Flexibility Exercise</option>
-                        <option value="2">Resistance Exercise</option>
-                        <option value="3">Aerobic Exercise</option>
+                    <select x-model="formData.category" class=" form-select form-select-sm border-dark" aria-label=".form-select-sm example">
+                        <option selected >Category</option>
+                        <option value="Flexibility Exercise">Flexibility Exercise</option>
+                        <option value="Resistance Exercise" >Resistance Exercise</option>
+                        
+                        <option value="Aerobic Exercise" >Aerobic Exercise</option>
                     </select>
                 </div>
-
+                <p x-text="formData.category"></p>
             </div>
             <div class="form-group mt-3">
                 <label class="fw-bolder" for="exampleInputPassword1">Due Date</label>
-                <input type="date" id="date" name="date">
+                <input type="date" id="date" name="date" x-model="formData.date" value="">
+                <p x-text='formData.date'></p>
             </div>
             <div class="form-group col-md-8 mt-2">
                 <label class="fw-bolder" for="exampleInputPassword1">Exercise name</label>
                 <input type="int" class="form-control border-dark" id="exampleInputEmail1"
-                    aria-describedby="addExercise">
+                    aria-describedby="addExercise" x-model="formData.title" value="">
+                    <p x-text='formData.title'></p>
 
             </div>
             <div class="row">
-                <div class="form-group col-md-4 mt-2 opacity-75">
+                <div class="form-group col-md-4 mt-2 ">
                     <label class="fw-bolder" for="exampleCheck1">Set</label>
                     <input type="int" class="form-control border-dark" id="exampleInputEmail1"
-                        aria-describedby="addExercise">
+                        aria-describedby="addExercise" x-model="formData.sets" value="">
                 </div>
                 <div class="form-group col-md-4 mt-2">
                     <label class="fw-bolder" for="exampleCheck1">Time</label>
                     <input type="int" class="form-control btn  border-dark" id="exampleInputEmail1"
-                        aria-describedby="addExercise">
+                        aria-describedby="addExercise" x-model="formData.time" value="">
                 </div>
             </div>
-            <button type="submit" class="btn mt-2 btn-outline-success fw-bold">Submit</button>
+            <button @click="submitForm()" class="btn mt-2 btn-outline-success fw-bold">Submit</button>
+            
         </form>
     </div>
 </div>
 
 {% endmacro %}
+
