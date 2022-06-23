@@ -128,7 +128,7 @@
                                                                 for="exampleInputPassword1">Exercise name</label>
                                                             <input type="int" class="form-control border-dark"
                                                                 id="exampleInputEmail1" aria-describedby="addExercise"
-                                                                value="" x-model="formdata.title">
+                                                                value="" x-model="formData.title">
 
 
 
@@ -150,11 +150,12 @@
                                                                     x-model="formData.time" value="">
 
                                                             </div>
-                                                            <input type="hidden" id="exeid" name="exeid"
-                                                                value={{d.exeid}} x-model="exeid">
+                                                            {# <input type="hidden" id="exeid" name="exeid" #}
+                                                                {# value={{d.exeid}}> #}
+                                                            
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-primary" @click="editFunction()">Edit</button>
+                                                            <button type="button" class="btn btn-primary" @click="editFunction({{d.exeid}})">Edit</button>
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal">Cancel</button>
                                                         </div>
@@ -227,11 +228,11 @@
                                                     id="exampleInputEmail1" aria-describedby="addExercise"
                                                     value="{{d.time}}">
                                             </div>
-                                            <input type="hidden" id="exeid" name="exeid" value={{d.exeid}}>
+                                            {# <input type="hidden" id="exeid" name="exeid" value="{{d.exeid}}"> #}
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger"
-                                                onclick="deleteExercise()">Delete</button>
+                                                onclick="deleteExercise({{d.exeid}})">Delete</button>
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Cancel</button>
                                         </div>

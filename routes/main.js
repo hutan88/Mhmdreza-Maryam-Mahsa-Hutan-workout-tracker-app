@@ -9,7 +9,6 @@ router.get('/',(req,res)=>
 {
  
     const allExercise =selectExercisesByUserID(global.getVarGlobal("getId"));
-    console.log(allExercise);
     res.render('main',{allExercise});
    
 });
