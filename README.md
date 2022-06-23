@@ -18,14 +18,14 @@ You can also manage your exercises with details **category**, **set**, **time** 
  * Crash safe,don't worry if something bad happens during a workout, your progress is saved and you can resume as soon as you reopen the app<br>
 
  
-# Set up
+# Running this project locally
 To run the App follow these steps after clone project:
 ```
 npm install
 npm start
 ```
 # User Documentation
-It includes many steps th
+It includes many steps to start work with the App
 
 ### Starting a Workout
 To start a workout, select **Register** from the main screen.This will present you with a form that you must put your email and password.
@@ -38,8 +38,18 @@ From here, you can start, stop, and monitor the activity.
 Put your exercises easily with insert simple and direct details. also you can able to delete and edit your exercise.
 
 ![image](https://user-images.githubusercontent.com/91375856/175243487-5b3655aa-4b74-4065-b937-62af090f99af.png)
+
 # Libraries & Tools Used
+**library**
 * Express
 * Better-sqlite
 * Axios
-* Crypto
+* Crypto<br>
+**Tools**
+* Bootstrap
+* Twig
+* Axios
+* SQL
+* Alpain.js
+# Found this project useful?
+Let's start!!
