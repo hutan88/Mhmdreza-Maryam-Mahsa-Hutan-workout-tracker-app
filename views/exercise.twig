@@ -65,20 +65,80 @@ function crudOperation(){
 
 }
 
-{# function getFormData(){
-  return {
-    exeid:'',
+// {# function getFormData(){
+//   return {
+//     exeid:'',
   
-  deleteExercise(){
-    console.log('check my delete exercise')
-    fetch('/exercise/de',{
+//   deleteExercise(){
+//     console.log('check my delete exercise')
+//     fetch('/exercise/de',{
+//         method:'post',
+//          headers:{'Content-Type': 'application/json'},
+//          body: JSON.stringify({this.exe.id})
+//     })
+// }
+//   }
+// } #}
+
+  function deleteExercise(exeId){
+    //const exeId = document.getElementById(exeid).value
+    console.log('mreza',exeId)
+    fetch('/exercise/delete',{
         method:'post',
          headers:{'Content-Type': 'application/json'},
-         body: JSON.stringify({this.exe.id})
-    })
-}
+         body: JSON.stringify({exeId})
+    }).then((response)=>{
+               response.json().then(r=>{
+                   if(r.answer){
+                       //this.status = true;
+                       window.location.href ='/exercise'
+                   }
+                  //  else{
+               
+                  //      window.location.href ='/main'
+                  //  }
+                })
+           })
+
   }
-} #}
+//mytest
+
+  function editExercise(){
+
+    return{
+      formData:{
+        title:'',
+        date:'',
+        sets:'',
+        time:'',
+        category:'',
+
+      },
+      editFunction(exeId){
+        console.log('helia')
+        //const exeId = document.getElementById('exeid').value
+        this.formData.exeid = exeId;
+        console.log(this.formData)
+        console.log('enter fetch',exeId);
+        fetch('/exercise/edit',{
+        method:'post',
+         headers:{'Content-Type': 'application/json'},
+         body: JSON.stringify(this.formData)
+    }).then((response)=>{
+               response.json().then(r=>{
+                   if(r.answer){
+                       //this.status = true;
+                       window.location.href ='/exercise'
+                   }
+                  //  else{
+               
+                  //      window.location.href ='/main'
+                  //  }
+                })
+           })
+          }
+  }
+}
     </script>
     
 

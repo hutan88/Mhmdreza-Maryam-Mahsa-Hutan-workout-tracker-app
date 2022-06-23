@@ -23,6 +23,7 @@ function changeUi(Timesfilter) {
  }
  
  function daily() {
+    
      const Timesfilter = []
      const getToday = new Date().getDate();
      allExerciseJs.forEach(index => {
