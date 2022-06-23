@@ -21,7 +21,7 @@
     {{usersCards.userCard(
         allExercise
     )}}       
-    <script >
+ <script >
   function OnLoad(){
     const checkUserId = localStorage.getItem('user-id');
     
@@ -29,9 +29,20 @@
     {
         window.location.href ='/login'
     }
-    window.onload= OnLoad();
+    
 }
+window.onload= OnLoad();
+    </script>
+
+   {% set allExerciseTwig = allExercise %}
+    <script>
+        let  allExerciseJs = {{ allExerciseTwig|json_encode }};    
+         
     </script>
     
+    <script src="/script/filter.js">
+     
+    </script>
+
 {% endblock %}
 
