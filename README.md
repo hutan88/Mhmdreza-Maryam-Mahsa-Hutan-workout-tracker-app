@@ -12,7 +12,6 @@ You can also manage your exercises with details **category**, **set**, **time** 
  In addition, The app allows a user to <br>
  * The simplest interface of any fitness app<br>
  * Add custom exercises. <br>
- * Build custom workout routines. <br>
  * Track workouts.<br>
  * Fetch history of all the tracked workouts. <br>
  * Crash safe,don't worry if something bad happens during a workout, your progress is saved and you can resume as soon as you reopen the app<br>
@@ -37,6 +36,7 @@ To start a workout, select **Register** from the main screen.This will present y
 From here, you can monitor the activity also you can monitor activity of other clubs user and get inspired by them for your exercises.
 Moreover, you can filter your workout to Daily and Weekly that it helps you to be more efficient and stick to your plan.
 
+![mary](https://user-images.githubusercontent.com/91375856/175312695-ef032095-beb2-42ce-812c-6c509c3e8545.PNG)
 
 
 ### Add Exercise
