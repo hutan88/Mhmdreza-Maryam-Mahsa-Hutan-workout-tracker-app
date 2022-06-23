@@ -28,8 +28,8 @@ function changeUi(Timesfilter) {
      const getToday = new Date().getDate();
      allExerciseJs.forEach(index => {
          let daily = index.date
-         let saa = daily.slice(8, 10)
-         if (saa === getToday.toString()) {
+         let dailyStr = daily.slice(8, 10)
+         if (dailyStr === getToday.toString()) {
              Timesfilter.push(index)
          }
      });
