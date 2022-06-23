@@ -1,8 +1,5 @@
 
-
-
 {% macro userCard(exerciseDetails) %}
-
 <!-- start main -->
 <main class=" pt-3 pb-5">
     <div class="container pt-3 rounded-2 cards-wrapper">
@@ -17,7 +14,7 @@
                     </div>
                     <h6 class="card-subtitle mt-2 fw-bold">Name : {{exerciseDetail.title}}</h6>
                     <label class="fw-bold" for="">Due Date : {{exerciseDetail.date}}</label><br>
-                    <label class="fw-bold" for="">Time : {{exerciseDetail.count}}</label><br>
+                    <label class="fw-bold" for="">Time : {{exerciseDetail.time}}</label><br>
                     <label for="" class="fw-bold">Set : {{exerciseDetail.sets}}</label><br>
                 </div>
             </div>
@@ -31,13 +28,14 @@
 
 
 
-{% macro editTicket() %}
+{% macro editTicket(data) %}
 {% import "components/button.twig" as buttonss %}
-
-<div class="container pt-3 pb-5 px-0 opacity-75">
+<div class="container pt-3 pb-5 px-0 ">
+    {% if data %}
     <div class="bg-light pt-3 rounded-2 px-3">
         <div class="row justify-content-center ">
             <div class="table-responsive-sm">
+            
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -57,10 +55,10 @@
                             <td>{{d.date}} </td>
                             <td>{{d.time}} </td>
                             <td>{{d.category}} </td>
-                            <td>{{d.exeid}}</td>
+                            
                             <td>
 
-                                {# {% import "components/button.twig" as buttonss %} #}
+                               
 
                                 {{buttonss.button(
 
@@ -151,8 +149,6 @@
                                                                     x-model="formData.time" value="">
 
                                                             </div>
-                                                            {# <input type="hidden" id="exeid" name="exeid" #}
-                                                                {# value={{d.exeid}}> #}
                                                             
                                                         </div>
                                                         <div class="modal-footer">
@@ -229,7 +225,7 @@
                                                     id="exampleInputEmail1" aria-describedby="addExercise"
                                                     value="{{d.time}}">
                                             </div>
-                                            {# <input type="hidden" id="exeid" name="exeid" value="{{d.exeid}}"> #}
+                                            
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger"
@@ -257,6 +253,7 @@
 
         </div>
     </div>
+    {% endif %}
 </div>
 
 {% endmacro %}
