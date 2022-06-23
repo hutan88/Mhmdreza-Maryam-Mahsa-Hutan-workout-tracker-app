@@ -16,7 +16,7 @@
     {{forms.form()}}
     
     {% import "components/difCard.twig" as editTickets %}
-    {{editTickets.editTicket(data)}}
+    {{editTickets.editTicket(userExercise)}}
   </div>
 </main>
 
@@ -36,7 +36,7 @@
 //window.onload= OnLoad();
 
 function crudOperation(){
-  console.log('check crud operation')
+  
   return{
     formData:{
       date:'',
@@ -47,8 +47,6 @@ function crudOperation(){
 
     },
     submitForm(){
-      //console.log(formData);
-      console.log('enter submitForm ');
       fetch('/exercise/add',{
         method:'post',
          headers:{'Content-Type': 'application/json'},
@@ -65,24 +63,10 @@ function crudOperation(){
 
 }
 
-// {# function getFormData(){
-//   return {
-//     exeid:'',
-  
-//   deleteExercise(){
-//     console.log('check my delete exercise')
-//     fetch('/exercise/de',{
-//         method:'post',
-//          headers:{'Content-Type': 'application/json'},
-//          body: JSON.stringify({this.exe.id})
-//     })
-// }
-//   }
-// } #}
+
 
   function deleteExercise(exeId){
-    //const exeId = document.getElementById(exeid).value
-    console.log('mreza',exeId)
+    
     fetch('/exercise/delete',{
         method:'post',
          headers:{'Content-Type': 'application/json'},
@@ -90,18 +74,14 @@ function crudOperation(){
     }).then((response)=>{
                response.json().then(r=>{
                    if(r.answer){
-                       //this.status = true;
                        window.location.href ='/exercise'
                    }
-                  //  else{
-               
-                  //      window.location.href ='/main'
-                  //  }
+                  
                 })
            })
 
   }
-//mytest
+
 
   function editExercise(){
 
@@ -115,11 +95,7 @@ function crudOperation(){
 
       },
       editFunction(exeId){
-        console.log('helia')
-        //const exeId = document.getElementById('exeid').value
         this.formData.exeid = exeId;
-        console.log(this.formData)
-        console.log('enter fetch',exeId);
         fetch('/exercise/edit',{
         method:'post',
          headers:{'Content-Type': 'application/json'},
@@ -127,13 +103,10 @@ function crudOperation(){
     }).then((response)=>{
                response.json().then(r=>{
                    if(r.answer){
-                       //this.status = true;
+                       
                        window.location.href ='/exercise'
                    }
-                  //  else{
-               
-                  //      window.location.href ='/main'
-                  //  }
+                  
                 })
            })
           }

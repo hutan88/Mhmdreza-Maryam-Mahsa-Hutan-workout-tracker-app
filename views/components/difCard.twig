@@ -1,8 +1,5 @@
 
-
-
 {% macro userCard(exerciseDetails) %}
-
 <!-- start main -->
 <main class=" pt-3 pb-5">
     <div class="container pt-3 rounded-2 cards-wrapper">
@@ -17,7 +14,7 @@
                     </div>
                     <h6 class="card-subtitle mt-2 fw-bold">Name : {{exerciseDetail.title}}</h6>
                     <label class="fw-bold" for="">Due Date : {{exerciseDetail.date}}</label><br>
-                    <label class="fw-bold" for="">Time : {{exerciseDetail.count}}</label><br>
+                    <label class="fw-bold" for="">Time : {{exerciseDetail.time}}</label><br>
                     <label for="" class="fw-bold">Set : {{exerciseDetail.sets}}</label><br>
                 </div>
             </div>
@@ -31,13 +28,14 @@
 
 
 
-{% macro editTicket() %}
+{% macro editTicket(userExercise) %}
 {% import "components/button.twig" as buttonss %}
-
-<div class="container pt-3 pb-5 px-0 opacity-75">
+<div class="container pt-3 pb-5 px-0 ">
+    {% if userExercise %}
     <div class="bg-light pt-3 rounded-2 px-3">
         <div class="row justify-content-center ">
             <div class="table-responsive-sm">
+            
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -50,18 +48,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                    {%  for d in data %}
+                    {%  for exercise in userExercise %}
                         <tr>
-                            <td>{{d.title}} </td>
-                            <td>{{d.sets}} </td>
-                            <td>{{d.date}} </td>
-                            <td>{{d.time}} </td>
-                            <td>{{d.category}} </td>
-                            <td>{{d.exeid}}</td>
+                            <td>{{exercise.title}} </td>
+                            <td>{{exercise.sets}} </td>
+                            <td>{{exercise.date}} </td>
+                            <td>{{exercise.time}} </td>
+                            <td>{{exercise.category}} </td>
                             <td>
-
-                                {# {% import "components/button.twig" as buttonss %} #}
-
                                 {{buttonss.button(
 
                                 [
@@ -70,7 +64,7 @@
 
                                 title : "Edit",
                                 modal:"modal",
-                                id:"#edit"~d.exeid,
+                                id:"#edit"~exercise.exeid,
                                 event:"",
 
                                 },
@@ -78,7 +72,7 @@
                                 class : "btn btn-sm btn-warning",
                                 title : "Delete",
                                 modal:"modal",
-                                id:"#delete"~d.exeid,
+                                id:"#delete"~exercise.exeid,
                                 event:""
                                 },
                                 ]
@@ -86,7 +80,7 @@
 
                                 <!--  edit Modal -->
                                 <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
-                                    id="edit{{d.exeid}}" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    id="edit{{exercise.exeid}}" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                     aria-hidden="true" x-data="editExercise()">
                                     <div class="modal-dialog modal-dialog-scrollable">
                                         <div class="modal-content">
@@ -115,14 +109,14 @@
                                                                     </option>
                                                                 </select>
                                                             </div>
-                                                            <p x-text="formData.category"></p>
+                                                            
                                                         </div>
                                                         <div class="form-group mt-3">
                                                             <label class="fw-bolder" for="exampleInputPassword1">Due
                                                                 Date</label>
                                                             <input type="date" id="date" name="date"
                                                                 x-model="formData.date" value="">
-                                                            <p x-text='formData.date'></p>
+                                                           
                                                         </div>
                                                         <div class="form-group col-md-8 mt-2">
                                                             <label class="fw-bolder"
@@ -151,12 +145,10 @@
                                                                     x-model="formData.time" value="">
 
                                                             </div>
-                                                            {# <input type="hidden" id="exeid" name="exeid" #}
-                                                                {# value={{d.exeid}}> #}
                                                             
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-primary" @click="editFunction({{d.exeid}})">Edit</button>
+                                                            <button type="button" class="btn btn-primary" @click="editFunction({{exercise.exeid}})">Edit</button>
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal">Cancel</button>
                                                         </div>
@@ -174,7 +166,7 @@
                                 </div>
             </div>
             <!--  delete Modal -->
-            <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="delete{{d.exeid}}"
+            <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="delete{{exercise.exeid}}"
                 tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
                 <div class="modal-dialog modal-dialog-scrollable">
                     <div class="modal-content">
@@ -190,7 +182,7 @@
                                             <div class="col-3 ">
                                                 <select class=" form-select form-select-sm border-dark"
                                                     aria-label=".form-select-sm example">
-                                                    <option selected>{{d.category}}</option>
+                                                    <option selected>{{exercise.category}}</option>
                                                     <option value="Flexibility Exercise">Flexibility
                                                         Exercise</option>
                                                     <option value="Resistance Exercise">Resistance
@@ -200,18 +192,18 @@
                                                     </option>
                                                 </select>
                                             </div>
-                                            <p x-text="formData.category"></p>
+                                            
                                         </div>
                                         <div class="form-group mt-3">
                                             <label class="fw-bolder" for="exampleInputPassword1">Due
                                                 Date</label>
                                             <input type="date" id="date" name="date" value="">
-                                            <p x-text='formData.date'></p>
+                                            
                                         </div>
                                         <div class="form-group col-md-8 mt-2">
                                             <label class="fw-bolder" for="exampleInputPassword1">Exercise name</label>
                                             <input type="int" class="form-control border-dark" id="exampleInputEmail1"
-                                                aria-describedby="addExercise" value="{{d.title}}">
+                                                aria-describedby="addExercise" value="{{exercise.title}}">
 
 
 
@@ -221,19 +213,19 @@
                                                 <label class="fw-bolder" for="exampleCheck1">Set</label>
                                                 <input type="int" class="form-control border-dark"
                                                     id="exampleInputEmail1" aria-describedby="addExercise"
-                                                    value="{{d.sets}}">
+                                                    value="{{exercise.sets}}">
                                             </div>
                                             <div class="form-group col-md-4 mt-2">
                                                 <label class="fw-bolder" for="exampleCheck1">Time</label>
                                                 <input type="int" class="form-control btn  border-dark"
                                                     id="exampleInputEmail1" aria-describedby="addExercise"
-                                                    value="{{d.time}}">
+                                                    value="{{exercise.time}}">
                                             </div>
-                                            {# <input type="hidden" id="exeid" name="exeid" value="{{d.exeid}}"> #}
+                                            
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger"
-                                                onclick="deleteExercise({{d.exeid}})">Delete</button>
+                                                onclick="deleteExercise({{exercise.exeid}})">Delete</button>
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Cancel</button>
                                         </div>
@@ -257,6 +249,7 @@
 
         </div>
     </div>
+    {% endif %}
 </div>
 
 {% endmacro %}

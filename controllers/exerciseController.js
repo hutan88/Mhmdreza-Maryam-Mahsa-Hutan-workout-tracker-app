@@ -4,7 +4,7 @@ const global= require('../utils/session');
 
 
 function addExercise(req,res){
-    //console.log('i enter addfunction');
+    
     const{title,time,sets,date,category} = req.body;
     //userid
     const userId = global.getVarGlobal('getId');
@@ -15,16 +15,13 @@ function addExercise(req,res){
 
 function showUserExercise(req,res){
     const userId =  global.getVarGlobal('getId');
-    const data = selectExercisesByUserID(userId)
-    // change name of variable and also in front in dif card.twig
-    res.render('exercise',{data})
+    const userExercise = selectExercisesByUserID(userId)
+    res.render('exercise',{userExercise})
 
 }
 
 function deleteUserExercise (req,res){
-    console.log('enter delete ')
     const {exeId} = req.body
-    console.log('delete',exeId);
     deleteExercise(exeId)
     res.send({answer:true})
     //res.redirect('/exercise')
@@ -32,9 +29,7 @@ function deleteUserExercise (req,res){
 }
 
 function editUserExercsie(req,res){
-    console.log('enter edit function')
     const {title,date,sets,time,category,exeid} = req.body;
-    console.log('notice exeid',exeid)
     updateExercise(title,date,sets,time,category,exeid)
     res.send({answer:true})
     //res.redirect('/exercise')

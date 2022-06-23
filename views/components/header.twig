@@ -16,12 +16,12 @@
                 {
                 class : "btn btn-outline-danger text-white border-0 me-2 fw-bold",
                 title : "Home",
-                event: ""
+                event: "home()"
                 },
                 {
                 class : "btn btn-outline-danger text-white border-0 me-2 fw-bold",
                 title : "Exercise",
-                event: ""
+                event: "exercise()"
                 },
                 {
                 class : "btn btn-outline-danger text-white border-0 me-2 fw-bold",
@@ -32,7 +32,6 @@
 
             )}}
         </div>
-
     </header>
 </div>
 <!-- finish header of webpage -->
@@ -41,6 +40,17 @@
         {
             localStorage.removeItem('user-id');
             window.location.href="/login"
+        }
+        
+        function exercise()
+        {
+            
+            window.location.href="/exercise"
+        }
+        function home()
+        {
+            
+            window.location.href="/main"
         }
 
     </script>
