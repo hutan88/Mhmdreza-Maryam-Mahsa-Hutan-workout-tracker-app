@@ -24,7 +24,7 @@ npm install express
 npm start
 ```
 # User Documentation
-It includes many steps to start work with the App
+It includes few steps to start work with the App
 
 ### Starting Workout
 To start a workout, select **Register** from the main screen.This will present you with a form that you must put your email and password.
