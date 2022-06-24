@@ -37,4 +37,13 @@ const selectExercisesByUserID = function(userId){
      data.run(title,date,sets,time,category,exeid);
  }
  
- module.exports = {insertUser,selectUser,selectExercisesByUserID,insertExercise,updateExercise,deleteExercise};
+
+// ============= API ===========
+ const selectView= function ()
+ {
+     const data = db.prepare('SELECT b.username,a.title,a.sets,a.date,a.time,a.category FROM exercise a LEFT JOIN users b ON a.id = b.id').all();
+     return data;
+ }
+ 
+
+ module.exports = {insertUser,selectUser,selectExercisesByUserID,insertExercise,updateExercise,deleteExercise,selectView};

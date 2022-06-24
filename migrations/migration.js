@@ -25,10 +25,11 @@ db.exec(createUserTable);
 
 const createExeTable = "CREATE TABLE IF NOT EXISTS exercise( exeid INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,title Text NOT NULL,sets Integer NOT NULL,date Integer NOT NULL,time Integer NOT NULL,category Text NOT NULL,id Integer NOT NULL  , FOREIGN KEY (id) REFERENCES users(id))"
 db.exec(createExeTable);
+ 
 
 
 // ======= Truncate users Table ================= 
-// const clearDB = "DELETE FROM users";
+// const clearDB = "DELETE FROM api_view_tbl";
 // db.exec(clearDB);
 
 

@@ -3,7 +3,6 @@ const app = express();
 app.use(express.json());
 const path=require('path');
 const staticPath=path.join(__dirname,"public");
-const {addExercise,showUserExercise,deleteUserExercise,editUserExercsie} = require('./controllers/exerciseController');
 
 // ============= Twig ===========
 app.set('view engine' , 'twig');
