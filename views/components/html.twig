@@ -1,4 +1,4 @@
-{% macro html(addressImage) %}
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -14,11 +14,14 @@
         defer
         src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"
       ></script>
+      {% block customestyle %}
+{% endblock %}
       
 </head>
 
-<body
-    style="background-image: url('asset/image/{{addressImage}}'); height: 100vh; background-size: cover; background-position: center;background-repeat: no-repeat;">
+
+<body>
+    
 
     {% block header %}
     {% endblock %}
@@ -37,4 +40,3 @@
 
 </html>
 
-{% endmacro %}

@@ -1,5 +1,20 @@
-`{% import "components/html.twig" as htmls %}
-{{ htmls.html("bg-exercise.jpg")}}
+
+
+{% extends "components/html.twig"  %}
+
+
+ {% block customestyle %}
+ <style>
+ body{
+    background-image: url('asset/image/bg-exercise.jpg');
+     height: 100vh;
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+ }
+ </style>
+ {% endblock %}  
 
 
 

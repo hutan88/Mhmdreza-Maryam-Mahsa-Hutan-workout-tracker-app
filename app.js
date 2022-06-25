@@ -24,7 +24,7 @@ const registerRoute=require('./routes/register');
 const loginRoute=require('./routes/login');
 const exerciseRoute=require('./routes/exercise');
 const mainRoute=require('./routes/main');
-const { getAPIShampoo } = require('./controllers/mainController');
+const { getAPIShampoo, getAPIPump } = require('./controllers/mainController');
 
 
 // =============== Routes Use ==============
@@ -37,8 +37,8 @@ app.use('/main',mainRoute);
  
 //test api
 
-app.get('/test2',getAPIShampoo)
-//app.get('/test3',get)
+app.get('/api/shampo',getAPIShampoo)
+app.get('/api/pump',getAPIPump)
 
 
 

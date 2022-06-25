@@ -1,7 +1,17 @@
-{% import "components/html.twig" as htmls %}
-{{ htmls.html("bg-main.jpg")}}
+{% extends "components/html.twig"  %}
+{# {{ htmls.html("bg-main.jpg")}} #}
 
-   
+ {% block customestyle %}
+ <style>
+ body{
+    background-image: url('asset/image/bg-main.jpg');
+     height: 100vh;
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+ }
+ </style>
+ {% endblock %} 
 
 {% block header %}  
 {% import "components/header.twig" as headers %}
@@ -16,11 +26,29 @@
 
 
 {% block main %}  
-{% import "components/difCard.twig" as usersCards %}
+      <main class=" pt-3 pb-5">
+    <div class="container pt-3 rounded-2 cards-wrapper">
+        <div class="row justify-content-center ">
 
-    {{usersCards.userCard(
-        data
-    )}}       
+            {% for exerciseDetail in otherGymData %}
+
+            <div class="card col-4 col-lg-3 m-2 border-5 border-dark opacity-75">
+                <div class="card-body">
+                    <label class="fw-bold" for=""> User Name : {{exerciseDetail.username}}</label><br>
+                    <div class="row">
+                        <h5 class="card-title fw-bold">Category : {{exerciseDetail.category}}</h5>
+                    </div>
+                    <h6 class="card-subtitle mt-2 fw-bold">Name : {{exerciseDetail.name}}</h6>
+                    <label class="fw-bold" for="">Due Date : {{exerciseDetail.dueDate}}</label><br>
+                    <label class="fw-bold" for="">Time : {{exerciseDetail.timeCount}}</label><br>
+                    <label for="" class="fw-bold">Set : {{exerciseDetail.repeatCount}}</label><br>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</main>
  
 
 {% endblock %}
