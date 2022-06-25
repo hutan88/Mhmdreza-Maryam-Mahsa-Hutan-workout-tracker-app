@@ -52,7 +52,8 @@ You Can Use API to See Our Users Exercises Plan.
 ***[our website address]/api***
 
 ### API Structure
-```[{
+```
+[{
 "username":"exmaple@example.com",
 "title":"Running (Example)",
 "sets":3 (Example),
