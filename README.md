@@ -44,6 +44,25 @@ Put your exercises easily with insert simple and direct details. also you can ab
 
 ![image](https://user-images.githubusercontent.com/91375856/175243487-5b3655aa-4b74-4065-b937-62af090f99af.png)
 
+# API
+You Can Use API to See Our Users Exercises Plan.
+
+### API LINK
+
+***[our website address]/api***
+
+### API Structure
+```[{
+"username":"exmaple@example.com",
+"title":"Running (Example)",
+"sets":3 (Example),
+"date":"2020-06-20 (Example)",
+"time":2H (Example),
+"category":"Flexibility Exercise (Example)"
+}]
+```
+
+
 # Libraries & Tools Used
 ### Libraries
 * Express
