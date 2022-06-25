@@ -61,7 +61,11 @@ You Can Use API to See Our Users Exercises Plan.
 "category":"Flexibility Exercise (Example)"
 }]
 ```
-
+# Hash Method
+it has been used createhash method of crypto module in our app 
+The main reason technology leaders use SHA-256 is that it doesn't have any known vulnerabilities that make it insecure and it has not been “broken” unlike some other popular hashing algorithms.
+As a whole, SHA-256 is better than MD5 because the output size is twice longer and the probability of collisions is lower. 
+SHA256 is recommended by NIST as having adequate hashing strength for passwords, at least for now.
 
 # Libraries & Tools Used
 ### Libraries
