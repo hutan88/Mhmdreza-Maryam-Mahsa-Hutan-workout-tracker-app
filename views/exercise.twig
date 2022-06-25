@@ -68,7 +68,7 @@ function crudOperation(){
   function deleteExercise(exeId){
     
     fetch('/exercise/delete',{
-        method:'post',
+        method:'delete',
          headers:{'Content-Type': 'application/json'},
          body: JSON.stringify({exeId})
     }).then((response)=>{
@@ -97,7 +97,7 @@ function crudOperation(){
       editFunction(exeId){
         this.formData.exeid = exeId;
         fetch('/exercise/edit',{
-        method:'post',
+        method:'put',
          headers:{'Content-Type': 'application/json'},
          body: JSON.stringify(this.formData)
     }).then((response)=>{
