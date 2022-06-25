@@ -113,7 +113,72 @@ function changeUi(Timesfilter) {
              break;
      }
  }
- 
- 
+ function test(){
+    console.log('enter fetch')
+    fetch('/test',{
+        method:"get",
+        headers:{'Content-Type': 'application/json'},
+        
+    
+    }).then((response)=>{
+       
+        response.json().then(r=>{
+            console.log(JSON.stringify(r))
+         
+         })
+    })
+
+ }
+ function shampoo(){
+    console.log('mreza',shampoExerciseJs)
+    const cardsWrapper = document.querySelector(".cards-wrapper .row")
+     cardsWrapper.innerHTML = "";
+     shampoExerciseJs.map(item => {
+        cardsWrapper.innerHTML += `
+            <div class="card col-4 col-lg-3 m-2 border-5 border-dark opacity-75 ">
+                <div class="card-body">
+                    <div class="row">
+                        <h5 class="card-title fw-bold">username : ${item.personName}</h5>
+                        <h5 class="card-title fw-bold">Category : ${item.exerciseName}</h5>
+    
+                    </div>
+                    <h6 class="card-subtitle mt-2 fw-bold">Name :  ${item.subExerciseName}</h6>
+                     <label class="fw-bold" for="">Due Date : test${item.DateOfExercise}</label><br>
+                    <label class="fw-bold" for="">Time :tests ${item.TimeOfEachRound}</label><br>
+                    <label for="" class="fw-bold">Set : ${item.NumberOfRounds}</label><br>
+                </div>
+            </div>
+         
+         `
+    })
+
+ }
+
+ function pumpHouse(){
+    function shampoo(){
+        //console.log('mreza',shampoExerciseJs)
+        const cardsWrapper = document.querySelector(".cards-wrapper .row")
+         cardsWrapper.innerHTML = "";
+         pumpHouseExerciseJs.map(item => {
+            cardsWrapper.innerHTML += `
+                <div class="card col-4 col-lg-3 m-2 border-5 border-dark opacity-75 ">
+                    <div class="card-body">
+                        <div class="row">
+                            <h5 class="card-title fw-bold">username : ${item.personName}</h5>
+                            <h5 class="card-title fw-bold">Category : ${item.exerciseName}</h5>
+        
+                        </div>
+                        <h6 class="card-subtitle mt-2 fw-bold">Name :  ${item.subExerciseName}</h6>
+                         <label class="fw-bold" for="">Due Date : test${item.DateOfExercise}</label><br>
+                        <label class="fw-bold" for="">Time :tests ${item.TimeOfEachRound}</label><br>
+                        <label for="" class="fw-bold">Set : ${item.NumberOfRounds}</label><br>
+                    </div>
+                </div>
+             
+             `
+        })
+    
+     }
+ }
  
  

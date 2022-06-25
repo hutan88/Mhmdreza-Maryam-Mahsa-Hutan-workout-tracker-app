@@ -1,0 +1,27 @@
+{% import "components/html.twig" as htmls %}
+{{ htmls.html("bg-main.jpg")}}
+
+   
+
+{% block header %}  
+{% import "components/header.twig" as headers %}
+    {{headers.header()}}
+{% endblock %}
+
+
+{% block navbar %} 
+{% import "components/navbar.twig" as navbars %} 
+     {{navbars.navbar()}}
+{% endblock %}
+
+
+{% block main %}  
+{% import "components/difCard.twig" as usersCards %}
+
+    {{usersCards.userCard(
+        data
+    )}}       
+ 
+
+{% endblock %}
+

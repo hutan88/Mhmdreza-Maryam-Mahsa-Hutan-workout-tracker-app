@@ -35,12 +35,15 @@ window.onload= OnLoad();
     </script>
 
    {% set allExerciseTwig = allExercise %}
-    <script>
-        let  allExerciseJs = {{ allExerciseTwig|json_encode }};    
+   {# {% set shampoExerciseTwig = shampoExercise %} #}
+ <script>
+         let  allExerciseJs = {{ allExerciseTwig|json_encode }};   
+        let  shampoExerciseJs = {{ shampoExercise|json_encode }};     
          
-    </script>
-    
+    </script> 
+       
     <script src="/script/filter.js">
+    
      
     </script>
 
