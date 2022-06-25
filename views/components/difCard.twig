@@ -139,7 +139,7 @@
                                                             <div class="form-group col-md-4 mt-2">
                                                                 <label class="fw-bolder"
                                                                     for="exampleCheck1">Time</label>
-                                                                <input type="int" class="form-control btn  border-dark"
+                                                                <input type="int" class="form-control   border-dark"
                                                                     id="exampleInputEmail1"
                                                                     aria-describedby="addExercise"
                                                                     x-model="formData.time" value="">
@@ -180,7 +180,7 @@
                                     <form>
                                         <div class="form-group">
                                             <div class="col-3 ">
-                                                <select class=" form-select form-select-sm border-dark"
+                                                <select disabled class=" form-select form-select-sm border-dark"
                                                     aria-label=".form-select-sm example">
                                                     <option selected>{{exercise.category}}</option>
                                                     <option value="Flexibility Exercise">Flexibility
@@ -197,12 +197,12 @@
                                         <div class="form-group mt-3">
                                             <label class="fw-bolder" for="exampleInputPassword1">Due
                                                 Date</label>
-                                            <input type="date" id="date" name="date" value="">
+                                            <input disabled  type="date" id="date" name="date" value="">
                                             
                                         </div>
                                         <div class="form-group col-md-8 mt-2">
                                             <label class="fw-bolder" for="exampleInputPassword1">Exercise name</label>
-                                            <input type="int" class="form-control border-dark" id="exampleInputEmail1"
+                                            <input disabled type="int" class="form-control border-dark" id="exampleInputEmail1"
                                                 aria-describedby="addExercise" value="{{exercise.title}}">
 
 
@@ -211,13 +211,13 @@
                                         <div class="row">
                                             <div class="form-group col-md-4 mt-2 ">
                                                 <label class="fw-bolder" for="exampleCheck1">Set</label>
-                                                <input type="int" class="form-control border-dark"
+                                                <input disabled type="int" class="form-control border-dark"
                                                     id="exampleInputEmail1" aria-describedby="addExercise"
                                                     value="{{exercise.sets}}">
                                             </div>
                                             <div class="form-group col-md-4 mt-2">
                                                 <label class="fw-bolder" for="exampleCheck1">Time</label>
-                                                <input type="int" class="form-control btn  border-dark"
+                                                <input disabled type="int" class="  form-control   border-dark"
                                                     id="exampleInputEmail1" aria-describedby="addExercise"
                                                     value="{{exercise.time}}">
                                             </div>
@@ -251,5 +251,4 @@
     </div>
     {% endif %}
 </div>
-
 {% endmacro %}

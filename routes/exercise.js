@@ -4,8 +4,8 @@ const {addExercise, showUserExercise, editUserExercsie, deleteUserExercise} = re
 
 router.route('/').get(showUserExercise)
 router.route('/add').post(addExercise);
-router.route('/exercise/edit').post(editUserExercsie);
-router.route('/exercise/delete').post(deleteUserExercise)
+router.route('/edit').post(editUserExercsie);
+router.route('/delete').post(deleteUserExercise)
 
 
 module.exports=router;
