@@ -1,15 +1,14 @@
 {% macro form()%}
 
    
-    <div class="row justify-content-center bg-light rounded-3 p-5" x-data="crudOperation()" >
-        <form>
+    <div class="row justify-content-center bg-light rounded-3 p-5" x-data="crudOperation()"  >
+        <form @submit="submitForm()">
             <div class="form-group">
                 <div class="col-3 ">
-                    <select x-model="formData.category" class=" form-select form-select-sm border-dark" aria-label=".form-select-sm example">
+                    <select required x-model="formData.category" class=" form-select form-select-sm border-dark" aria-label=".form-select-sm example">
                         <option selected >Category</option>
                         <option value="Flexibility Exercise">Flexibility Exercise</option>
                         <option value="Resistance Exercise" >Resistance Exercise</option>
-                        
                         <option value="Aerobic Exercise" >Aerobic Exercise</option>
                     </select>
                 </div>
@@ -17,13 +16,13 @@
             </div>
             <div class="form-group mt-3">
                 <label class="fw-bolder" for="exampleInputPassword1">Due Date</label>
-                <input type="date" id="date" name="date" x-model="formData.date" value="">
+                <input type="date" required id="date" name="date" x-model="formData.date" value="">
                 
             </div>
             <div class="form-group col-md-8 mt-2">
                 <label class="fw-bolder" for="exampleInputPassword1">Exercise name</label>
                 <input type="int" class="form-control border-dark" id="exampleInputEmail1"
-                    aria-describedby="addExercise" x-model="formData.title" value="">
+                    aria-describedby="addExercise" x-model="formData.title" value="" required>
        
 
             </div>
@@ -31,15 +30,15 @@
                 <div class="form-group col-md-4 mt-2 ">
                     <label class="fw-bolder" for="exampleCheck1">Set</label>
                     <input type="int" class="form-control btn border-dark" id="exampleInputEmail1"
-                        aria-describedby="addExercise" x-model="formData.sets" value="">
+                        aria-describedby="addExercise" x-model="formData.sets" value="" required>
                 </div>
                 <div class="form-group col-md-4 mt-2">
                     <label class="fw-bolder" for="exampleCheck1">Time</label>
                     <input type="int" class="form-control text-center  border-dark" id="exampleInputEmail1"
-                        aria-describedby="addExercise" x-model="formData.time" value="">
+                        aria-describedby="addExercise" x-model="formData.time" value="" required>
                 </div>
             </div>
-            <button @click="submitForm()" class="btn mt-2 btn-outline-success fw-bold">Submit</button>
+            <button  type="submit" class="btn mt-2 btn-outline-success fw-bold">Submit</button>
             
         </form>
     </div>
