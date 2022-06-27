@@ -18,11 +18,20 @@ You can also manage your exercises with details **category**, **set**, **time** 
 
  
 # Running this project locally
+Clone the repository:
+```git clone git@github.com:Lo-Agency-Internship/Mhmdreza-Maryam-Mahsa-Hutan-workout-tracker-app.git```
+
 To run the App follow these steps after clone project:
 ```
 npm install express
 npm start
 ```
+
+Type url into your browser:
+```http://127.0.0.1:3000/```
+Or
+```http://localhist:3000/```
+
 # User Documentation
 It includes few steps to start work with the App
 
