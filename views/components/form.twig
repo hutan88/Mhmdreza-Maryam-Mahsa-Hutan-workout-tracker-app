@@ -5,7 +5,7 @@
         <form @submit="submitForm()">
             <div class="form-group">
                 <div class="col-3 ">
-                    <select required x-model="formData.category" class=" form-select form-select-sm border-dark" aria-label=".form-select-sm example">
+                    <select required x-model="formData.category" class=" form-select form-select-sm border-dark" aria-label=".form-select-sm example" >
                         <option selected >Category</option>
                         <option value="Flexibility Exercise">Flexibility Exercise</option>
                         <option value="Resistance Exercise" >Resistance Exercise</option>
@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="form-group col-md-4 mt-2 ">
                     <label class="fw-bolder" for="exampleCheck1">Set</label>
-                    <input type="int" class="form-control btn border-dark" id="exampleInputEmail1"
+                    <input type="number" class="form-control btn border-dark" id="exampleInputEmail1"
                         aria-describedby="addExercise" x-model="formData.sets" value="" required>
                 </div>
                 <div class="form-group col-md-4 mt-2">
