@@ -26,10 +26,22 @@ function changeUi(Timesfilter) {
     
      const Timesfilter = []
      const getToday = new Date().getDate();
+     const getMonth = new Date().getMonth()+1;
+     const getFullYear = new Date().getFullYear();
+     let getMonthStr;
+    if (getMonth>9) {
+        getMonthStr=getMonth.toString()
+    }   
+    else
+    {
+        getMonthStr="0"+getMonth.toString()
+    }
      allExerciseJs.forEach(index => {
-         let daily = index.date
-         let dailyStr = daily.slice(8, 10)
-         if (dailyStr === getToday.toString()) {
+         let dateinDb = index.date
+         let dayStr = dateinDb.slice(8, 10)
+         let monthStr = dateinDb.slice(5, 7)
+         let yearStr = dateinDb.slice(0, 4)
+         if (dayStr === getToday.toString() && monthStr === getMonthStr  && yearStr === getFullYear.toString()) {
              Timesfilter.push(index)
          }
      });
@@ -37,8 +49,7 @@ function changeUi(Timesfilter) {
      return Timesfilter
  }
  
- 
- 
+
  
  function weekly() {
      // const filteri = []
@@ -46,23 +57,27 @@ function changeUi(Timesfilter) {
      const d = new Date();
      let day = d.getDate();
      let month = d.getMonth();
+     const getFullYear = d.getFullYear();
      let endday = day + 7;
      let endmonth = month + 1
      if (endday > 31) {
          endmonth = month + 1
      }
- 
+
      allExerciseJs.forEach(index => {
-         let editdate = index.date
+         let editdate = index.date //2022-06-07
          let editmonth = editdate.slice(6, 7)
-         let editmonthitem = parseInt(editmonth)
+         let editmonthitem = parseInt(editmonth) // month int
  
          let dayitem = editdate.slice(8, 10)
-         let editdayitem = parseInt(dayitem)
+         let editdayitem = parseInt(dayitem) // day int
+
+         let yearStr = editdate.slice(0, 4)//2022 str
+
          if (editdayitem >= 1 && editdayitem <= 8) {
              editdayitem = editdayitem + 31
          }
-         if (editmonthitem === month + 1 || editmonthitem === endmonth + 1) {
+         if ((editmonthitem === month + 1 || editmonthitem === endmonth + 1) && yearStr ===getFullYear.toString()) {
              if (editmonthitem === endmonth + 1) {
                  if (editdayitem > 31 && editdayitem < 38) {
                      if (editdayitem >= day && editdayitem <= endday) {
@@ -82,7 +97,7 @@ function changeUi(Timesfilter) {
      return Timesfilter
  }
  
- 
+
  function all() {
      const Timesfilter = []
      console.log("3")
